@@ -5,7 +5,7 @@ import path from "node:path";
 import shell from 'shelljs';
 
 const BASE_DIR = './src';
-const BASE_STUBS_DIR = './node_modules/@donnierich/vue-3-options-preset/src/stubs';
+const BASE_STUBS_DIR = './node_modules/vue-3-options-preset/src/stubs';
 
 // Get the optional argv
 const argv = process.argv.slice(2);
