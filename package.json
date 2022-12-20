@@ -1,5 +1,5 @@
 {
-    "name": "@donnierich/vue-3-options-preset",
+    "name": "vue-3-options-preset",
     "version": "1.0.1",
     "description": "Simple preset using options API and SCSS for Vite and Vue 3",
     "type": "module",
