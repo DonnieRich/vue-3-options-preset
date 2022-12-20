@@ -1,0 +1,29 @@
+{
+    "name": "@donnierich/vue-3-options-preset",
+    "version": "1.0.0",
+    "description": "Simple preset using options API and SCSS for Vite and Vue 3",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "bin": {
+        "preset-options-api": "./index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "keywords": [
+        "vue 3",
+        "vite",
+        "scaffolding",
+        "options API"
+    ],
+    "homepage": "",
+    "author": "Donato Riccio",
+    "license": "MIT",
+    "dependencies": {
+        "shelljs": "^0.8.5"
+    }
+}
