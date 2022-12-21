@@ -31,4 +31,4 @@ npx preset-options-api -b
 
 ## NOTE
 
-Use this package only on new projects, right after the Vite finished the scaffolding process!
+Use this package only on new projects, right after Vite finished the scaffolding process!
