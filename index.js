@@ -29,18 +29,6 @@ const init = async () => {
     console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready!');
 };
 
-// const removeCssFile = async (baseDir) => {
-//     console.log('\x1b[37m%s\x1b[0m', '♻️  Removing old files...');
-
-//     for (const file of await fs.readdir(baseDir)) {
-//         if (file === 'style.css') {
-//             await fs.unlink(path.join(baseDir, file));
-//         }
-//     }
-
-//     console.log('\x1b[36m%s\x1b[0m', '✅  All files removed!');
-// }
-
 const copyFiles = async (baseStubsDir, baseDir, bootstrap) => {
     console.log('\x1b[37m%s\x1b[0m', '📑  Copying new files...');
     let result = true;
