@@ -4,11 +4,15 @@
     "description": "Simple preset using options API and SCSS for Vite and Vue 3",
     "main": "index.js",
     "scripts": {
-        "test": "jest --verbose ./__tests__"
+        "test": "jest ./__tests__",
+        "test-verbose": "jest --verbose ./__tests__"
     },
     "bin": {
         "preset-options-api": "./index.js"
     },
+    "pre-commit": [
+        "test"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/DonnieRich/vue-3-options-preset.git"
