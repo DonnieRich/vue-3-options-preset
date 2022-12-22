@@ -30,32 +30,6 @@ const init = async () => {
     console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready!');
 };
 
-// const copyFiles = async (baseStubsDir, baseDir, bootstrap) => {
-//     console.log('\x1b[37m%s\x1b[0m', '📑  Copying new files...');
-//     let result = true;
-
-//     try {
-//         await fs.copyFile(`${baseStubsDir}/App.vue`, `${baseDir}/App.vue`);
-//         await fs.copyFile(`${baseStubsDir}/HelloWorld.vue`, `${baseDir}/components/HelloWorld.vue`);
-//         await fs.copyFile(`${baseStubsDir}/main.js`, `${baseDir}/main.js`);
-
-//         await fs.mkdir(`${baseDir}/styles`);
-
-//         if (bootstrap) {
-//             await fs.copyFile(`${baseStubsDir}/general-bootstrap.scss`, `${baseDir}/styles/general.scss`);
-//         } else {
-//             await fs.copyFile(`${baseStubsDir}/general.scss`, `${baseDir}/styles/general.scss`);
-//         }
-
-//         console.log('\x1b[36m%s\x1b[0m', '✅  Copy completed!');
-
-//     } catch (err) {
-//         console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete copy of new files. Error: ${err}`);
-//         result = false;
-//     }
-//     return result;
-// }
-
 const npmInstallSass = async () => {
 
     console.log('\x1b[37m%s\x1b[0m', '✨  Installing SASS...');
