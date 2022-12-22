@@ -1,5 +1,4 @@
 const { vol } = require("memfs");
-const fs = require("fs/promises");
 
 jest.mock("fs/promises");
 
