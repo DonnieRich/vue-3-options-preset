@@ -5,6 +5,7 @@ const path = require("node:path");
 const shell = require('shelljs');
 
 const { removeCssFile } = require("./src/bin/removeCssFile");
+const { copyStubFiles } = require("./src/bin/copyStubFiles");
 
 const BASE_DIR = './src';
 const BASE_STUBS_DIR = './node_modules/vue-3-options-preset/src/stubs';
@@ -24,36 +25,36 @@ const init = async () => {
     }
 
     await npmInstallSass();
-    await copyFiles(BASE_STUBS_DIR, BASE_DIR, bootstrap);
+    await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, bootstrap);
 
     console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready!');
 };
 
-const copyFiles = async (baseStubsDir, baseDir, bootstrap) => {
-    console.log('\x1b[37m%s\x1b[0m', '📑  Copying new files...');
-    let result = true;
+// const copyFiles = async (baseStubsDir, baseDir, bootstrap) => {
+//     console.log('\x1b[37m%s\x1b[0m', '📑  Copying new files...');
+//     let result = true;
 
-    try {
-        await fs.copyFile(`${baseStubsDir}/App.vue`, `${baseDir}/App.vue`);
-        await fs.copyFile(`${baseStubsDir}/HelloWorld.vue`, `${baseDir}/components/HelloWorld.vue`);
-        await fs.copyFile(`${baseStubsDir}/main.js`, `${baseDir}/main.js`);
+//     try {
+//         await fs.copyFile(`${baseStubsDir}/App.vue`, `${baseDir}/App.vue`);
+//         await fs.copyFile(`${baseStubsDir}/HelloWorld.vue`, `${baseDir}/components/HelloWorld.vue`);
+//         await fs.copyFile(`${baseStubsDir}/main.js`, `${baseDir}/main.js`);
 
-        await fs.mkdir(`${baseDir}/styles`);
+//         await fs.mkdir(`${baseDir}/styles`);
 
-        if (bootstrap) {
-            await fs.copyFile(`${baseStubsDir}/general-bootstrap.scss`, `${baseDir}/styles/general.scss`);
-        } else {
-            await fs.copyFile(`${baseStubsDir}/general.scss`, `${baseDir}/styles/general.scss`);
-        }
+//         if (bootstrap) {
+//             await fs.copyFile(`${baseStubsDir}/general-bootstrap.scss`, `${baseDir}/styles/general.scss`);
+//         } else {
+//             await fs.copyFile(`${baseStubsDir}/general.scss`, `${baseDir}/styles/general.scss`);
+//         }
 
-        console.log('\x1b[36m%s\x1b[0m', '✅  Copy completed!');
+//         console.log('\x1b[36m%s\x1b[0m', '✅  Copy completed!');
 
-    } catch (err) {
-        console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete copy of new files. Error: ${err}`);
-        result = false;
-    }
-    return result;
-}
+//     } catch (err) {
+//         console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete copy of new files. Error: ${err}`);
+//         result = false;
+//     }
+//     return result;
+// }
 
 const npmInstallSass = async () => {
 
