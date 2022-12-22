@@ -4,7 +4,7 @@
     "description": "Simple preset using options API and SCSS for Vite and Vue 3",
     "main": "index.js",
     "scripts": {
-        "test": "jest ./__tests__",
+        "test": "jest --coverage ./__tests__",
         "test-verbose": "jest --verbose ./__tests__"
     },
     "bin": {
