@@ -2,7 +2,6 @@ const fs = require("fs/promises");
 
 const copyStubFiles = async (baseStubsDir, baseDir, bootstrap) => {
     console.log('\x1b[37m%s\x1b[0m', '📑  Copying new files...');
-    //let result = true;
 
     try {
         await fs.copyFile(`${baseStubsDir}/App.vue`, `${baseDir}/App.vue`);
@@ -21,9 +20,7 @@ const copyStubFiles = async (baseStubsDir, baseDir, bootstrap) => {
 
     } catch (err) {
         console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete copy of new files. Error: ${err}`);
-        //result = false;
     }
-    //return result;
 }
 
 module.exports = { copyStubFiles };
