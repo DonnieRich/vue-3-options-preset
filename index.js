@@ -1,8 +1,10 @@
 #! /usr/bin/env node
-import fs from "node:fs/promises";
-import path from "node:path";
+const fs = require("node:fs/promises");
+const path = require("node:path");
 
-import shell from 'shelljs';
+const shell = require('shelljs');
+
+const { removeCssFile } = require("./src/bin/removeCssFile");
 
 const BASE_DIR = './src';
 const BASE_STUBS_DIR = './node_modules/vue-3-options-preset/src/stubs';
@@ -27,17 +29,17 @@ const init = async () => {
     console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready!');
 };
 
-const removeCssFile = async (baseDir) => {
-    console.log('\x1b[37m%s\x1b[0m', '♻️  Removing old files...');
+// const removeCssFile = async (baseDir) => {
+//     console.log('\x1b[37m%s\x1b[0m', '♻️  Removing old files...');
 
-    for (const file of await fs.readdir(baseDir)) {
-        if (file === 'style.css') {
-            await fs.unlink(path.join(baseDir, file));
-        }
-    }
+//     for (const file of await fs.readdir(baseDir)) {
+//         if (file === 'style.css') {
+//             await fs.unlink(path.join(baseDir, file));
+//         }
+//     }
 
-    console.log('\x1b[36m%s\x1b[0m', '✅  All files removed!');
-}
+//     console.log('\x1b[36m%s\x1b[0m', '✅  All files removed!');
+// }
 
 const copyFiles = async (baseStubsDir, baseDir, bootstrap) => {
     console.log('\x1b[37m%s\x1b[0m', '📑  Copying new files...');
