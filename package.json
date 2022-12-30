@@ -11,9 +11,6 @@
     "bin": {
         "preset-options-api": "./index.js"
     },
-    "pre-commit": [
-        "test"
-    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/DonnieRich/vue-3-options-preset.git"
@@ -32,7 +29,6 @@
     },
     "devDependencies": {
         "jest": "^29.3.1",
-        "memfs": "^3.4.12",
-        "pre-commit": "^1.2.2"
+        "memfs": "^3.4.12"
     }
 }
