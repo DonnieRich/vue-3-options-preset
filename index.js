@@ -3,6 +3,7 @@ const shell = require('shelljs');
 
 const { removeCssFile } = require("./src/bin/removeCssFile");
 const { copyStubFiles } = require("./src/bin/copyStubFiles");
+const { addDependenciesToPackageJson } = require("./src/bin/addDependenciesToPackageJson");
 
 const BASE_DIR = './src';
 const BASE_STUBS_DIR = './node_modules/vue-3-options-preset/src/stubs';
@@ -18,11 +19,13 @@ const init = async () => {
 
     if (argv[0] === '-b') {
         bootstrap = true;
-        await npmInstallBootstrap();
+        //await npmInstallBootstrap();
     }
 
-    await npmInstallSass();
+    //await npmInstallSass();
     await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, bootstrap);
+
+    await addDependenciesToPackageJson(BASE_STUBS_DIR, BASE_DIR, bootstrap);
 
     console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready!');
 };
