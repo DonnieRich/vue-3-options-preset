@@ -16,11 +16,11 @@ describe(writeJsonDataToFile, () => {
 
         vol.fromJSON(
             {
-                "package.json": "..."
+                "/package.json": "..."
             },
             '/'
         );
 
-        await expect(() => writeJsonDataToFile("", data)).rejects.toThrow("Empty object provided!");
+        await expect(() => writeJsonDataToFile("/package.json", data)).rejects.toThrow("Empty object provided!");
     });
 });

@@ -17,12 +17,12 @@ describe(writeJsonDataToFile, () => {
 
         vol.fromJSON(
             {
-                "package.json": "..."
+                "/package.json": "..."
             },
             '/'
         );
 
-        await writeJsonDataToFile("", data);
+        await writeJsonDataToFile("/package.json", data);
         expect(vol.toJSON()).toMatchSnapshot();
     });
 });

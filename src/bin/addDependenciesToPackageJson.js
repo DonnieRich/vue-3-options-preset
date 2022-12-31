@@ -1,4 +1,3 @@
-const fs = require("fs/promises");
 const { getJsonDataFromFile } = require("./getJsonDataFromFile");
 const { mergeJsonObjects } = require("./mergeJsonObjects");
 const { writeJsonDataToFile } = require("./writeJsonDataToFile");
@@ -13,12 +12,14 @@ const addDependenciesToPackageJson = async (baseStubsDir, baseDir, bootstrap) =>
         stubPackageJson = await getJsonDataFromFile(baseStubsDir);
         projectPackageJson = await getJsonDataFromFile(baseDir);
 
-        projectPackageJson.devDependencies = await { ...mergeJsonObjects(stubPackageJson.devDependencies, projectPackageJson.devDependencies) };
+        projectPackageJson.devDependencies = await mergeJsonObjects(stubPackageJson.devDependencies, projectPackageJson.devDependencies);
 
         // adding bootstrap and popper to dependencies
         if (bootstrap) {
-            projectPackageJson.dependencies = await { ...mergeJsonObjects(stubPackageJson.dependencies, projectPackageJson.dependencies) };
+            projectPackageJson.dependencies = await mergeJsonObjects(stubPackageJson.dependencies, projectPackageJson.dependencies);
         }
+
+        console.log(JSON.stringify(projectPackageJson));
 
         await writeJsonDataToFile(baseDir, projectPackageJson);
 

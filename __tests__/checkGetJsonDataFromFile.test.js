@@ -13,14 +13,14 @@ describe(getJsonDataFromFile, () => {
 
         vol.fromJSON(
             {
-                "package.json": "{ \"check\": true }"
+                "/package.json": "{ \"check\": true }"
             },
             '/'
         );
 
         console.log(vol.toJSON());
 
-        const jsonData = await getJsonDataFromFile("");
+        const jsonData = await getJsonDataFromFile("/package.json");
         expect(jsonData).toEqual({ check: true });
     });
 });
