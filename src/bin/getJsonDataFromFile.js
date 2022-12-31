@@ -5,19 +5,15 @@ const getJsonDataFromFile = async (fileBasePath) => {
     let jsonData = {};
 
     try {
-        await fs.readFile(`${fileBasePath}/package.json`, (err, data) => {
 
-            if (err) {
-                throw err;
-            }
+        let streamData = await fs.readFile(`${fileBasePath}/package.json`, { encoding: 'utf-8' });
+        jsonData = JSON.parse(streamData);
 
-            jsonData = JSON.parse(data);
-        });
-        return jsonData;
     } catch (err) {
         console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot read JSON from file. Error: ${err}`);
     }
 
+    return jsonData;
 }
 
 module.exports = { getJsonDataFromFile };

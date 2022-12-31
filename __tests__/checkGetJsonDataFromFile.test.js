@@ -13,7 +13,7 @@ describe(getJsonDataFromFile, () => {
 
         vol.fromJSON(
             {
-                'package.json': '{ "check": true }'
+                "package.json": "{ \"check\": true }"
             },
             '/'
         );
