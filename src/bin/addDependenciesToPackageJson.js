@@ -13,23 +13,10 @@ const addDependenciesToPackageJson = async (baseStubsDir, baseDir, bootstrap) =>
         stubPackageJson = await getJsonDataFromFile(baseStubsDir);
         projectPackageJson = await getJsonDataFromFile(baseDir);
 
-        // adding devDependencies - ie. Sass
-        // const stubPackageJsonDependenciesKeys = stubPackageJson.devDependencies.keys();
-
-        // stubPackageJsonDependenciesKeys.forEach(key => {
-        //     projectPackageJson.devDependencies[key] = stubPackageJson.devDependencies[key];
-        // });
-
         projectPackageJson.devDependencies = await { ...mergeJsonObjects(stubPackageJson.devDependencies, projectPackageJson.devDependencies) };
 
         // adding bootstrap and popper to dependencies
         if (bootstrap) {
-            // const stubPackageJsonDependenciesKeys = stubPackageJson.dependencies.keys();
-
-            // stubPackageJsonDependenciesKeys.forEach(key => {
-            //     projectPackageJson.dependencies[key] = stubPackageJson.dependencies[key];
-            // });
-
             projectPackageJson.dependencies = await { ...mergeJsonObjects(stubPackageJson.dependencies, projectPackageJson.dependencies) };
         }
 
