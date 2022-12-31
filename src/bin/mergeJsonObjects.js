@@ -5,7 +5,7 @@ const mergeJsonObjects = async (stubJson, packageJson) => {
     let jsonData = packageJson ?? {};
 
     try {
-        const stubPackageJsonKeys = stubJson.keys();
+        const stubPackageJsonKeys = Object.keys(stubJson);
 
         stubPackageJsonKeys.forEach(key => {
             jsonData[key] = stubJson[key];
