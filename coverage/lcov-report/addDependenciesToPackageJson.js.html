@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for copyStubFiles.js</title>
+    <title>Code coverage report for addDependenciesToPackageJson.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> copyStubFiles.js</h1>
+        <h1><a href="index.html">All files</a> addDependenciesToPackageJson.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/14</span>
+                <span class='fraction'>16/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/14</span>
+                <span class='fraction'>16/18</span>
             </div>
         
             
@@ -88,57 +88,78 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">const fs = require("fs/promises");
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const { getJsonDataFromFile } = require("./getJsonDataFromFile");
+const { mergeJsonObjects } = require("./mergeJsonObjects");
+const { writeJsonDataToFile } = require("./writeJsonDataToFile");
 &nbsp;
-const copyStubFiles = async (baseStubsDir, baseDir, bootstrap) =&gt; {
-    console.log('\x1b[37m%s\x1b[0m', '📑  Copying new files...');
+const addDependenciesToPackageJson = async (baseStubsDir, baseDir, bootstrap) =&gt; {
+    console.log('\x1b[37m%s\x1b[0m', '📑  Adding dependencies to package.json...');
+&nbsp;
+    let stubPackageJson = {};
+    let projectPackageJson = {};
 &nbsp;
     try {
-        await fs.copyFile(`${baseStubsDir}/App.vue`, `${baseDir}/App.vue`);
-        await fs.copyFile(`${baseStubsDir}/HelloWorld.vue`, `${baseDir}/components/HelloWorld.vue`);
-        await fs.copyFile(`${baseStubsDir}/main.js`, `${baseDir}/main.js`);
+        stubPackageJson = await getJsonDataFromFile(baseStubsDir);
+        projectPackageJson = await getJsonDataFromFile(baseDir);
 &nbsp;
-        await fs.mkdir(`${baseDir}/styles`);
+        projectPackageJson.devDependencies = await mergeJsonObjects(stubPackageJson.devDependencies, projectPackageJson.devDependencies);
 &nbsp;
-        if (bootstrap) {
-            await fs.copyFile(`${baseStubsDir}/general-bootstrap.scss`, `${baseDir}/styles/general.scss`);
-        } else {
-            await fs.copyFile(`${baseStubsDir}/general.scss`, `${baseDir}/styles/general.scss`);
+        // adding bootstrap and popper to dependencies
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (bootstrap) {
+<span class="cstat-no" title="statement not covered" >            projectPackageJson.dependencies = await mergeJsonObjects(stubPackageJson.dependencies, projectPackageJson.dependencies);</span>
         }
 &nbsp;
-        console.log('\x1b[36m%s\x1b[0m', '✅  Copy completed!');
+        console.log(JSON.stringify(projectPackageJson));
+&nbsp;
+        await writeJsonDataToFile(baseDir, projectPackageJson);
+&nbsp;
+        console.log('\x1b[36m%s\x1b[0m', '✅  Dependencies added successfully!');
 &nbsp;
     } catch (err) {
-<span class="cstat-no" title="statement not covered" >        console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete copy of new files. Error: ${err}`);</span>
+<span class="cstat-no" title="statement not covered" >        console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot add new dependencies to package.json. Error: ${err}`);</span>
     }
 }
 &nbsp;
-module.exports = { copyStubFiles };</pre></td></tr></table></pre>
+module.exports = { addDependenciesToPackageJson };</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
