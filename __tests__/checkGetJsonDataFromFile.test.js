@@ -18,8 +18,6 @@ describe(getJsonDataFromFile, () => {
             '/'
         );
 
-        console.log(vol.toJSON());
-
         const jsonData = await getJsonDataFromFile("/package.json");
         expect(jsonData).toEqual({ check: true });
     });

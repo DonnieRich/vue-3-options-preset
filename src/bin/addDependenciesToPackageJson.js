@@ -21,8 +21,6 @@ const addDependenciesToPackageJson = async (baseStubsFile, baseFile, bootstrap) 
             projectPackageJson.dependencies = await jsonOperations.mergeJsonObjects(stubPackageJson.dependencies, projectPackageJson.dependencies);
         }
 
-        console.log(JSON.stringify(projectPackageJson));
-
         await jsonOperations.writeJsonDataToFile(baseFile, projectPackageJson);
 
         console.log('\x1b[36m%s\x1b[0m', '✅  Dependencies added successfully!');
