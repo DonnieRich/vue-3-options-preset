@@ -1,6 +1,7 @@
 # Vite + Vue 3 Options API preset
 
 ![CI/CD](https://github.com/DonnieRich/vue-3-options-preset/actions/workflows/node.js.yml/badge.svg?branch=master)
+[![npm version](https://badge.fury.io/js/vue-3-options-preset.svg)](//npmjs.com/package/vue-3-options-preset)
 
 This package update the default Vite + Vue 3 scaffolding installation:
 
