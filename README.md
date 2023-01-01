@@ -1,5 +1,7 @@
 # Vite + Vue 3 Options API preset
 
+![CI/CD](https://github.com/DonnieRich/vue-3-options-preset/actions/workflows/node.js.yml/badge.svg?branch=master)
+
 This package update the default Vite + Vue 3 scaffolding installation:
 
 - replacing the use of the *Composition API* with the *Options API*
