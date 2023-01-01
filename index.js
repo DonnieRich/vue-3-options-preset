@@ -1,6 +1,4 @@
 #! /usr/bin/env node
-const shell = require('shelljs');
-
 const { removeCssFile } = require("./src/bin/removeCssFile");
 const { copyStubFiles } = require("./src/bin/copyStubFiles");
 const { addDependenciesToPackageJson } = require("./src/bin/addDependenciesToPackageJson");
@@ -25,38 +23,9 @@ const init = async () => {
     //await npmInstallSass();
     await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, bootstrap);
 
-    await addDependenciesToPackageJson(BASE_STUBS_DIR, BASE_DIR, bootstrap);
+    await addDependenciesToPackageJson(`${BASE_STUBS_DIR}/package.json`, `./package.json`, bootstrap);
 
-    console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready!');
+    console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready! Just run: npm install');
 };
-
-const npmInstallSass = async () => {
-
-    console.log('\x1b[37m%s\x1b[0m', '✨  Installing SASS...');
-
-    const result = shell.exec('npm add -D sass');
-
-    if (result.code !== 0) {
-        console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete SASS installation. Exit code: ${result.code}`);
-    } else {
-        console.log('\x1b[36m%s\x1b[0m', '✅  SASS installation completed!');
-    }
-
-    return result.code;
-}
-
-const npmInstallBootstrap = async () => {
-    console.log('\x1b[37m%s\x1b[0m', '✨  Installing Bootstrap...');
-
-    const result = shell.exec('npm i --save bootstrap @popperjs/core');
-
-    if (result.code !== 0) {
-        console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete Bootstrap installation. Exit code: ${result.code}`);
-    } else {
-        console.log('\x1b[36m%s\x1b[0m', '✅  Bootstrap installation completed!');
-    }
-
-    return result.code;
-}
 
 init();
