@@ -10,22 +10,25 @@ const BASE_STUBS_DIR = './node_modules/vue-3-options-preset/src/stubs';
 const argv = process.argv.slice(2);
 
 const init = async () => {
-    let bootstrap = false;
 
-    // all the commands run from the root
-    await removeCssFile(BASE_DIR);
+    try {
+        let bootstrap = false;
 
-    if (argv[0] === '-b') {
-        bootstrap = true;
-        //await npmInstallBootstrap();
+        // all the commands run from the root
+        await removeCssFile(BASE_DIR);
+
+        if (argv[0] === '-b') {
+            bootstrap = true;
+        }
+
+        await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, bootstrap);
+
+        await addDependenciesToPackageJson(`${BASE_STUBS_DIR}/package.json`, `./package.json`, bootstrap);
+
+        console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready! Just run: npm install');
+    } catch (err) {
+        console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete the scaffolding process. Error: ${err}`);
     }
-
-    //await npmInstallSass();
-    await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, bootstrap);
-
-    await addDependenciesToPackageJson(`${BASE_STUBS_DIR}/package.json`, `./package.json`, bootstrap);
-
-    console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready! Just run: npm install');
 };
 
 init();
