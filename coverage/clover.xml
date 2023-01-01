@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1672571821756" clover="3.2.0">
+  <project timestamp="1672571821756" name="All files">
+    <metrics statements="61" coveredstatements="61" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7" elements="76" coveredelements="76" complexity="0" loc="61" ncloc="61" packages="1" files="7" classes="7"/>
+    <file name="addDependenciesToPackageJson.js" path="C:\MAMP\htdocs\boolean\vue-3-options-preset\src\bin\addDependenciesToPackageJson.js">
+      <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="8" count="2" type="stmt"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="11" count="2" type="stmt"/>
+      <line num="13" count="2" type="stmt"/>
+      <line num="14" count="2" type="stmt"/>
+      <line num="16" count="2" type="stmt"/>
+      <line num="19" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="23" count="2" type="stmt"/>
+      <line num="27" count="1" type="stmt"/>
+    </file>
+    <file name="copyStubFiles.js" path="C:\MAMP\htdocs\boolean\vue-3-options-preset\src\bin\copyStubFiles.js">
+      <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="1" count="2" type="stmt"/>
+      <line num="3" count="2" type="stmt"/>
+      <line num="4" count="2" type="stmt"/>
+      <line num="6" count="2" type="stmt"/>
+      <line num="7" count="2" type="stmt"/>
+      <line num="8" count="2" type="stmt"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="20" count="2" type="stmt"/>
+    </file>
+    <file name="getJsonDataFromFile.js" path="C:\MAMP\htdocs\boolean\vue-3-options-preset\src\bin\getJsonDataFromFile.js">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="1" count="2" type="stmt"/>
+      <line num="3" count="2" type="stmt"/>
+      <line num="4" count="5" type="stmt"/>
+      <line num="5" count="5" type="stmt"/>
+      <line num="7" count="5" type="stmt"/>
+      <line num="8" count="5" type="stmt"/>
+      <line num="10" count="5" type="stmt"/>
+      <line num="13" count="2" type="stmt"/>
+    </file>
+    <file name="jsonOperations.js" path="C:\MAMP\htdocs\boolean\vue-3-options-preset\src\bin\jsonOperations.js">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+    </file>
+    <file name="mergeJsonObjects.js" path="C:\MAMP\htdocs\boolean\vue-3-options-preset\src\bin\mergeJsonObjects.js">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="1" count="2" type="stmt"/>
+      <line num="3" count="2" type="stmt"/>
+      <line num="4" count="5" type="stmt"/>
+      <line num="5" count="5" type="stmt"/>
+      <line num="7" count="5" type="stmt"/>
+      <line num="9" count="5" type="stmt"/>
+      <line num="10" count="6" type="stmt"/>
+      <line num="13" count="5" type="stmt"/>
+      <line num="16" count="2" type="stmt"/>
+    </file>
+    <file name="removeCssFile.js" path="C:\MAMP\htdocs\boolean\vue-3-options-preset\src\bin\removeCssFile.js">
+      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="1" count="2" type="stmt"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="4" count="2" type="stmt"/>
+      <line num="5" count="2" type="stmt"/>
+      <line num="7" count="2" type="stmt"/>
+      <line num="8" count="2" type="cond" truecount="2" falsecount="0"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="15" count="2" type="stmt"/>
+    </file>
+    <file name="writeJsonDataToFile.js" path="C:\MAMP\htdocs\boolean\vue-3-options-preset\src\bin\writeJsonDataToFile.js">
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="1" count="4" type="stmt"/>
+      <line num="3" count="4" type="stmt"/>
+      <line num="4" count="5" type="stmt"/>
+      <line num="5" count="5" type="stmt"/>
+      <line num="7" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="11" count="4" type="stmt"/>
+      <line num="15" count="4" type="stmt"/>
+    </file>
+  </project>
+</coverage>

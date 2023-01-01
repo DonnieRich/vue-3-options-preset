@@ -1,8 +1,7 @@
 #! /usr/bin/env node
-import fs from "node:fs/promises";
-import path from "node:path";
-
-import shell from 'shelljs';
+const { removeCssFile } = require("./src/bin/removeCssFile");
+const { copyStubFiles } = require("./src/bin/copyStubFiles");
+const { addDependenciesToPackageJson } = require("./src/bin/addDependenciesToPackageJson");
 
 const BASE_DIR = './src';
 const BASE_STUBS_DIR = './node_modules/vue-3-options-preset/src/stubs';
@@ -11,87 +10,25 @@ const BASE_STUBS_DIR = './node_modules/vue-3-options-preset/src/stubs';
 const argv = process.argv.slice(2);
 
 const init = async () => {
-    let bootstrap = false;
-
-    // all the commands run from the root
-    await removeCssFile(BASE_DIR);
-
-    if (argv[0] === '-b') {
-        bootstrap = true;
-        await npmInstallBootstrap();
-    }
-
-    await npmInstallSass();
-    await copyFiles(BASE_STUBS_DIR, BASE_DIR, bootstrap);
-
-    console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready!');
-};
-
-const removeCssFile = async (baseDir) => {
-    console.log('\x1b[37m%s\x1b[0m', '♻️  Removing old files...');
-
-    for (const file of await fs.readdir(baseDir)) {
-        if (file === 'style.css') {
-            await fs.unlink(path.join(baseDir, file));
-        }
-    }
-
-    console.log('\x1b[36m%s\x1b[0m', '✅  All files removed!');
-}
-
-const copyFiles = async (baseStubsDir, baseDir, bootstrap) => {
-    console.log('\x1b[37m%s\x1b[0m', '📑  Copying new files...');
-    let result = true;
 
     try {
-        await fs.copyFile(`${baseStubsDir}/App.vue`, `${baseDir}/App.vue`);
-        await fs.copyFile(`${baseStubsDir}/HelloWorld.vue`, `${baseDir}/components/HelloWorld.vue`);
-        await fs.copyFile(`${baseStubsDir}/main.js`, `${baseDir}/main.js`);
+        let bootstrap = false;
 
-        await fs.mkdir(`${baseDir}/styles`);
+        // all the commands run from the root
+        await removeCssFile(BASE_DIR);
 
-        if (bootstrap) {
-            await fs.copyFile(`${baseStubsDir}/general-bootstrap.scss`, `${baseDir}/styles/general.scss`);
-        } else {
-            await fs.copyFile(`${baseStubsDir}/general.scss`, `${baseDir}/styles/general.scss`);
+        if (argv[0] === '-b') {
+            bootstrap = true;
         }
 
-        console.log('\x1b[36m%s\x1b[0m', '✅  Copy completed!');
+        await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, bootstrap);
 
+        await addDependenciesToPackageJson(`${BASE_STUBS_DIR}/package.json`, `./package.json`, bootstrap);
+
+        console.log('\x1b[36m%s\x1b[0m', '✅  Your Vue 3 project is now ready! Just run: npm install');
     } catch (err) {
-        console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete copy of new files. Error: ${err}`);
-        result = false;
+        console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete the scaffolding process. Error: ${err}`);
     }
-    return result;
-}
-
-const npmInstallSass = async () => {
-
-    console.log('\x1b[37m%s\x1b[0m', '✨  Installing SASS...');
-
-    const result = shell.exec('npm add -D sass');
-
-    if (result.code !== 0) {
-        console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete SASS installation. Exit code: ${result.code}`);
-    } else {
-        console.log('\x1b[36m%s\x1b[0m', '✅  SASS installation completed!');
-    }
-
-    return result.code;
-}
-
-const npmInstallBootstrap = async () => {
-    console.log('\x1b[37m%s\x1b[0m', '✨  Installing Bootstrap...');
-
-    const result = shell.exec('npm i --save bootstrap @popperjs/core');
-
-    if (result.code !== 0) {
-        console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete Bootstrap installation. Exit code: ${result.code}`);
-    } else {
-        console.log('\x1b[36m%s\x1b[0m', '✅  Bootstrap installation completed!');
-    }
-
-    return result.code;
-}
+};
 
 init();
