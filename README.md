@@ -12,7 +12,7 @@ This package update the default Vite + Vue 3 scaffolding installation:
 To install this package, run the following command in the terminal:
 
 ```
-npm install vue-3-options-preset
+npm install --save-dev vue-3-options-preset
 ```
 
 ## Usage
