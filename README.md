@@ -1,7 +1,10 @@
 # Vite + Vue 3 Options API preset
 
-![CI/CD](https://github.com/DonnieRich/vue-3-options-preset/actions/workflows/node.js.yml/badge.svg?branch=master)
-[![npm version](https://badge.fury.io/js/vue-3-options-preset.svg)](//npmjs.com/package/vue-3-options-preset)
+[![CI/CD](https://img.shields.io/github/actions/workflow/status/DonnieRich/vue-3-options-preset/node.js.yml)](//github.com/DonnieRich/vue-3-options-preset)
+[![npm version](https://img.shields.io/npm/v/vue-3-options-preset)](//npmjs.com/package/vue-3-options-preset)
+[![package size](https://img.shields.io/bundlephobia/min/vue-3-options-preset)](//npmjs.com/package/vue-3-options-preset)
+[![license](https://img.shields.io/github/license/DonnieRich/vue-3-options-preset)](//github.com/DonnieRich/vue-3-options-preset/blob/master/LICENSE.md)
+[![last commit](https://img.shields.io/github/last-commit/DonnieRich/vue-3-options-preset)](//github.com/DonnieRich/vue-3-options-preset)
 
 This package update the default Vite + Vue 3 scaffolding installation:
 
@@ -35,3 +38,7 @@ npx preset-options-api -b
 ## NOTE
 
 Use this package only on new projects, right after Vite finished the scaffolding process!
+
+### Credits
+
+Badges from [shields.io](https://shields.io/)
