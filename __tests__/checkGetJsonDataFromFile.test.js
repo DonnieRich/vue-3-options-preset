@@ -24,4 +24,16 @@ describe(getJsonDataFromFile, () => {
         const jsonData = await getJsonDataFromFile(JSON_FILE);
         expect(jsonData).toEqual({ check: true });
     });
+
+    it("It should fail if the file package.json has not been found", async () => {
+
+        vol.fromJSON(
+            {
+                "/noPackage.json": "{ \"check\": true }"
+            },
+            '/'
+        );
+
+        await expect(() => getJsonDataFromFile(JSON_FILE)).rejects.toThrow(Error);
+    });
 });
