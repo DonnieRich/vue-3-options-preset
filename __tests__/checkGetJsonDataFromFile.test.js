@@ -1,8 +1,11 @@
 const { vol } = require("memfs");
-
 jest.mock("fs/promises");
 
 const { getJsonDataFromFile } = require("../src/bin/getJsonDataFromFile");
+
+// import all json config files
+const config = require('../__mocks__/src/config/production.json');
+const JSON_FILE = config.JSON_FILE;
 
 describe(getJsonDataFromFile, () => {
     beforeEach(() => {
@@ -13,12 +16,12 @@ describe(getJsonDataFromFile, () => {
 
         vol.fromJSON(
             {
-                "/package.json": "{ \"check\": true }"
+                [JSON_FILE]: "{ \"check\": true }"
             },
             '/'
         );
 
-        const jsonData = await getJsonDataFromFile("/package.json");
+        const jsonData = await getJsonDataFromFile(JSON_FILE);
         expect(jsonData).toEqual({ check: true });
     });
 });

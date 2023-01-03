@@ -13,3 +13,17 @@ exports[`copyStubFiles It should pass if the stub files are copied in the new lo
   "/src/styles/general.scss": "...",
 }
 `;
+
+exports[`copyStubFiles It should pass if the stub files are copied in the new location with  SCSS file for Bootstrap 1`] = `
+{
+  "/node_modules/vue-3-options-preset/src/stubs/App.vue": "...",
+  "/node_modules/vue-3-options-preset/src/stubs/HelloWorld.vue": "...",
+  "/node_modules/vue-3-options-preset/src/stubs/general-bootstrap.scss": "...",
+  "/node_modules/vue-3-options-preset/src/stubs/main.js": "...",
+  "/src/App.vue": "...",
+  "/src/components/HelloWorld.vue": "...",
+  "/src/justAFile.js": "...",
+  "/src/main.js": "...",
+  "/src/styles/general.scss": "...",
+}
+`;
