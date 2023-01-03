@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`writeJsonDataToFile It should pass if the file package.json has been updated with the complex data provided 1`] = `
+{
+  "/package.json": "{"check":true,"dependencies":{"first":"first","second":2},"devDependencies":{"third":false,"fourth":"ok"}}",
+}
+`;
+
 exports[`writeJsonDataToFile It should pass if the file package.json has been updated with the data provided 1`] = `
 {
   "/package.json": "{"check":true}",
