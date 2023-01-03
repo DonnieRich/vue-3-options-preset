@@ -4,8 +4,15 @@ jest.mock("fs/promises");
 const { addDependenciesToPackageJson } = require("../src/bin/addDependenciesToPackageJson");
 const { jsonOperations } = require("../src/bin/jsonOperations");
 
-const BASE_FILE = '/package.json';
-const BASE_STUB_FILE = '/node_modules/vue-3-options-preset/src/stubs/package.json';
+// import all json config files
+const config = require('../__mocks__/src/config/production.json');
+const stubJson = require('../src/stubs/package.json');
+const baseJson = require('./__jsons__/base.json');
+const updatedJsonBootstrap = require('./__jsons__/updatedJsonBootstrap.json');
+const updatedJsonNoBootstrap = require('./__jsons__/updatedJsonNoBootstrap.json');
+
+const BASE_FILE = config.JSON_FILE;
+const BASE_STUB_FILE = `${config.BASE_STUBS_DIR}${config.JSON_FILE}`;
 
 // preparing the mock modules
 let mockGetJsonDataFromFile;
@@ -26,52 +33,6 @@ describe(addDependenciesToPackageJson, () => {
         mockWriteJsonDataToFile.mockRestore();
     });
 
-    const stubJson = {
-        dependencies: {
-            "@popperjs/core": "^2.11.6",
-            bootstrap: "^5.2.3"
-        },
-        devDependencies: {
-            sass: "^1.57.1"
-        }
-    };
-
-    const baseJson = {
-        license: "MIT",
-        dependencies: {
-            shelljs: "^0.8.5"
-        },
-        devDependencies: {
-            jest: "^29.3.1",
-            memfs: "^3.4.12"
-        }
-    };
-
-    const updatedJsonNoBootstrap = {
-        license: "MIT",
-        dependencies: {
-            shelljs: "^0.8.5"
-        },
-        devDependencies: {
-            sass: "^1.57.1",
-            jest: "^29.3.1",
-            memfs: "^3.4.12"
-        }
-    };
-
-    const updatedJsonBootstrap = {
-        license: "MIT",
-        dependencies: {
-            shelljs: "^0.8.5",
-            "@popperjs/core": "^2.11.6",
-            bootstrap: "^5.2.3"
-        },
-        devDependencies: {
-            sass: "^1.57.1",
-            jest: "^29.3.1",
-            memfs: "^3.4.12"
-        }
-    };
 
     it("It should pass if the file package.json has been updated with the merged devDependencies", async () => {
 
