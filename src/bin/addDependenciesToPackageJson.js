@@ -1,7 +1,3 @@
-// const { getJsonDataFromFile } = require("./getJsonDataFromFile");
-// const { mergeJsonObjects } = require("./mergeJsonObjects");
-// const { writeJsonDataToFile } = require("./writeJsonDataToFile");
-
 const { jsonOperations } = require("./jsonOperations");
 
 const addDependenciesToPackageJson = async (baseStubsFile, baseFile, bootstrap) => {

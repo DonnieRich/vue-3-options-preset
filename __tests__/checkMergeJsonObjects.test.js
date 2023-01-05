@@ -26,4 +26,24 @@ describe(mergeJsonObjects, () => {
         });
 
     });
+
+    it("It should fail if one of the two parameters is not an object", async () => {
+
+        const stubJson = {
+            devDependencies: {
+                sass: "^1.57.1"
+            }
+        };
+
+        const packageJson = {
+            devDependencies: {
+                jest: "^29.3.1"
+            }
+        };
+
+        await expect(() => mergeJsonObjects([], packageJson.devDependencies)).rejects.toThrow(Error);
+
+        await expect(() => mergeJsonObjects(stubJson.devDependencies, [])).rejects.toThrow(Error);
+
+    });
 });

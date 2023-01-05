@@ -1,8 +1,11 @@
 const { vol } = require("memfs");
-
 jest.mock("fs/promises");
 
 const { removeCssFile } = require("../src/bin/removeCssFile");
+
+// import all json config files
+const { config } = require('../src/config/config.test');
+const { BASE_DIR } = config.get();
 
 describe(removeCssFile, () => {
     beforeEach(() => {
@@ -13,12 +16,26 @@ describe(removeCssFile, () => {
 
         vol.fromJSON(
             {
-                "/src/style.css": "my style"
+                [`${BASE_DIR}/style.css`]: "my style"
             },
             "/"
         );
 
-        await removeCssFile("/src");
+        await removeCssFile(BASE_DIR);
         expect(vol.toJSON()).toMatchSnapshot();
+    });
+
+    it("It should pass if the file main.js has not been removed", async () => {
+
+        const json = {
+            [`${BASE_DIR}/main.js`]: "my js"
+        };
+        vol.fromJSON(
+            json,
+            "/"
+        );
+
+        await removeCssFile(BASE_DIR);
+        expect(vol.toJSON()).toEqual(json);
     });
 });
