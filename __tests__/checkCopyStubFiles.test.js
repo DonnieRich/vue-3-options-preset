@@ -4,9 +4,8 @@ jest.mock("fs/promises");
 const { copyStubFiles } = require("../src/bin/copyStubFiles");
 
 // import all json config files
-const config = require('../__mocks__/src/config/production.json');
-const BASE_STUBS_DIR = config.BASE_STUBS_DIR;
-const BASE_DIR = config.BASE_DIR;
+const { config } = require('../src/config/config.test');
+const { BASE_DIR, BASE_STUBS_DIR } = config.get();
 
 describe(copyStubFiles, () => {
     beforeEach(() => {

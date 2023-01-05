@@ -5,14 +5,14 @@ const { addDependenciesToPackageJson } = require("../src/bin/addDependenciesToPa
 const { jsonOperations } = require("../src/bin/jsonOperations");
 
 // import all json config files
-const config = require('../__mocks__/src/config/production.json');
+const { config } = require('../src/config/config.test');
 const stubJson = require('../src/stubs/package.json');
 const baseJson = require('./__jsons__/base.json');
 const updatedJsonBootstrap = require('./__jsons__/updatedJsonBootstrap.json');
 const updatedJsonNoBootstrap = require('./__jsons__/updatedJsonNoBootstrap.json');
 
-const BASE_FILE = config.JSON_FILE;
-const BASE_STUB_FILE = `${config.BASE_STUBS_DIR}${config.JSON_FILE}`;
+const BASE_FILE = config.get().JSON_FILE;
+const BASE_STUB_FILE = `${config.get().BASE_STUBS_DIR}${BASE_FILE}`;
 
 // preparing the mock modules
 let mockGetJsonDataFromFile;

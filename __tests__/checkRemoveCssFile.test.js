@@ -4,8 +4,8 @@ jest.mock("fs/promises");
 const { removeCssFile } = require("../src/bin/removeCssFile");
 
 // import all json config files
-const config = require('../__mocks__/src/config/production.json');
-const BASE_DIR = config.BASE_DIR;
+const { config } = require('../src/config/config.test');
+const { BASE_DIR } = config.get();
 
 describe(removeCssFile, () => {
     beforeEach(() => {

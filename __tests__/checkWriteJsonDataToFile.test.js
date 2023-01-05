@@ -4,8 +4,8 @@ jest.mock("fs/promises");
 const { writeJsonDataToFile } = require("../src/bin/writeJsonDataToFile");
 
 // import all json config files
-const config = require('../__mocks__/src/config/production.json');
-const JSON_FILE = config.JSON_FILE;
+const { config } = require('../src/config/config.test');
+const { JSON_FILE } = config.get();
 
 describe(writeJsonDataToFile, () => {
     beforeEach(() => {
