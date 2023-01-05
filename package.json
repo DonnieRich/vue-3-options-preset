@@ -9,7 +9,7 @@
         "test-coverage": "jest --coverage ./__tests__"
     },
     "bin": {
-        "preset-options-api": "./index.js"
+        "preset-options-api": "./cmd/index.js"
     },
     "repository": {
         "type": "git",
@@ -25,7 +25,7 @@
     "author": "Donato Riccio",
     "license": "MIT",
     "devDependencies": {
-        "execa": "^6.1.0",
+        "@gmrchk/cli-testing-library": "^0.1.2",
         "jest": "^29.3.1",
         "memfs": "^3.4.12"
     }
