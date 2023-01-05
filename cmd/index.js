@@ -12,8 +12,6 @@ const argv = process.argv.slice(2);
 
 const init = async () => {
 
-    console.log(`config: ${BASE_DIR}`);
-
     try {
         let bootstrap = false;
 
