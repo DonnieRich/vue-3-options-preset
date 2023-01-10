@@ -1,6 +1,7 @@
 # Vite + Vue 3 Options API preset
 
 [![CI/CD](https://img.shields.io/github/actions/workflow/status/DonnieRich/vue-3-options-preset/node.js.yml)](//github.com/DonnieRich/vue-3-options-preset)
+[![Coverage](https://img.shields.io/coverallsCoverage/github/DonnieRich/vue-3-options-preset)](https://coveralls.io/github/DonnieRich/vue-3-options-preset?branch=master)
 [![npm version](https://img.shields.io/npm/v/vue-3-options-preset)](//npmjs.com/package/vue-3-options-preset)
 [![package size](https://img.shields.io/bundlephobia/min/vue-3-options-preset)](//npmjs.com/package/vue-3-options-preset)
 [![license](https://img.shields.io/github/license/DonnieRich/vue-3-options-preset)](//github.com/DonnieRich/vue-3-options-preset/blob/master/LICENSE.md)
