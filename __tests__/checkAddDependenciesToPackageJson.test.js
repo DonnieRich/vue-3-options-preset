@@ -34,7 +34,7 @@ describe(addDependenciesToPackageJson, () => {
     });
 
 
-    it("It should pass if the file package.json has been updated with the merged devDependencies", async () => {
+    it("Should pass if the file package.json has been updated with the merged devDependencies", async () => {
 
         vol.fromJSON(
             {
@@ -61,7 +61,7 @@ describe(addDependenciesToPackageJson, () => {
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
-    it("It should pass if the file package.json has been updated with the merged dependencies", async () => {
+    it("Should pass if the file package.json has been updated with the merged dependencies", async () => {
 
         vol.fromJSON(
             {

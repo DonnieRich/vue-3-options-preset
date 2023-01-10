@@ -2,7 +2,7 @@ const { mergeJsonObjects } = require("../src/bin/mergeJsonObjects");
 
 describe(mergeJsonObjects, () => {
 
-    it("It should pass if the two objects are merged", async () => {
+    it("Should pass if the two objects are merged", async () => {
 
         const stubJson = {
             devDependencies: {
@@ -27,7 +27,7 @@ describe(mergeJsonObjects, () => {
 
     });
 
-    it("It should fail if one of the two parameters is not an object", async () => {
+    it("Should fail if one of the two parameters is not an object", async () => {
 
         const stubJson = {
             devDependencies: {

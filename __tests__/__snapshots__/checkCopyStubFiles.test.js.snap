@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`copyStubFiles It should pass if the stub files are copied in the new location 1`] = `
+exports[`copyStubFiles Should pass if the stub files are copied in the new location 1`] = `
 {
   "/node_modules/vue-3-options-preset/src/stubs/App.vue": "...",
   "/node_modules/vue-3-options-preset/src/stubs/HelloWorld.vue": "...",
@@ -14,7 +14,7 @@ exports[`copyStubFiles It should pass if the stub files are copied in the new lo
 }
 `;
 
-exports[`copyStubFiles It should pass if the stub files are copied in the new location with  SCSS file for Bootstrap 1`] = `
+exports[`copyStubFiles Should pass if the stub files are copied in the new location with  SCSS file for Bootstrap 1`] = `
 {
   "/node_modules/vue-3-options-preset/src/stubs/App.vue": "...",
   "/node_modules/vue-3-options-preset/src/stubs/HelloWorld.vue": "...",

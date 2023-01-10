@@ -12,7 +12,7 @@ describe(getJsonDataFromFile, () => {
         vol.reset();
     });
 
-    it("It should pass if the file package.json has been found and the content is read and converted to an object", async () => {
+    it("Should pass if the file package.json has been found and the content is read and converted to an object", async () => {
 
         vol.fromJSON(
             {
@@ -25,7 +25,7 @@ describe(getJsonDataFromFile, () => {
         expect(jsonData).toEqual({ check: true });
     });
 
-    it("It should fail if the file package.json has not been found", async () => {
+    it("Should fail if the file package.json has not been found", async () => {
 
         vol.fromJSON(
             {

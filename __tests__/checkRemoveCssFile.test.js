@@ -12,7 +12,7 @@ describe(removeCssFile, () => {
         vol.reset();
     });
 
-    it("It should pass if the file style.css has been found and removed", async () => {
+    it("Should pass if the file style.css has been found and removed", async () => {
 
         vol.fromJSON(
             {
@@ -25,7 +25,7 @@ describe(removeCssFile, () => {
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
-    it("It should pass if the file main.js has not been removed", async () => {
+    it("Should pass if the file main.js has not been removed", async () => {
 
         const json = {
             [`${BASE_DIR}/main.js`]: "my js"

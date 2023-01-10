@@ -12,7 +12,7 @@ describe(copyStubFiles, () => {
         vol.reset();
     });
 
-    it("It should pass if the stub files are copied in the new location", async () => {
+    it("Should pass if the stub files are copied in the new location", async () => {
 
         vol.fromJSON(
             {
@@ -30,7 +30,7 @@ describe(copyStubFiles, () => {
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
-    it("It should pass if the stub files are copied in the new location with  SCSS file for Bootstrap", async () => {
+    it("Should pass if the stub files are copied in the new location with  SCSS file for Bootstrap", async () => {
 
         vol.fromJSON(
             {
