@@ -1,10 +1,10 @@
 const { vol } = require("memfs");
 jest.mock("fs/promises");
 
-const { getJsonDataFromFile } = require("../src/bin/getJsonDataFromFile");
+const { getJsonDataFromFile } = require("../../src/bin/getJsonDataFromFile");
 
 // import all json config files
-const { config } = require('../src/config/config.test');
+const { config } = require('../../src/config/config.test');
 const { JSON_FILE } = config.get();
 
 describe(getJsonDataFromFile, () => {
@@ -12,7 +12,7 @@ describe(getJsonDataFromFile, () => {
         vol.reset();
     });
 
-    it("It should pass if the file package.json has been found and the content is read and converted to an object", async () => {
+    it("Should pass if the file package.json has been found and the content is read and converted to an object", async () => {
 
         vol.fromJSON(
             {
@@ -25,7 +25,7 @@ describe(getJsonDataFromFile, () => {
         expect(jsonData).toEqual({ check: true });
     });
 
-    it("It should fail if the file package.json has not been found", async () => {
+    it("Should fail if the file package.json has not been found", async () => {
 
         vol.fromJSON(
             {

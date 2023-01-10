@@ -1,8 +1,8 @@
-const { isObjectOrNull } = require('../src/utils/isObjectOrNull');
+const { isObjectOrNull } = require('../../src/utils/isObjectOrNull');
 
 describe(isObjectOrNull, () => {
 
-    it("It should return true if the item is an object", async () => {
+    it("Should return true if the item is an object", async () => {
 
         const stubJson = {
             devDependencies: {
@@ -15,13 +15,13 @@ describe(isObjectOrNull, () => {
         expect(isObjectOrNull({})).toBe(true);
     });
 
-    it("It should return true if the item is null", async () => {
+    it("Should return true if the item is null", async () => {
 
         expect(isObjectOrNull(null)).toBe(true);
 
     });
 
-    it("It should return false if the item is null", async () => {
+    it("Should return false if the item is null", async () => {
 
         expect(isObjectOrNull(1)).toBe(false);
 

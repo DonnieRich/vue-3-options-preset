@@ -1,10 +1,10 @@
 const { vol } = require("memfs");
 jest.mock("fs/promises");
 
-const { removeCssFile } = require("../src/bin/removeCssFile");
+const { removeCssFile } = require("../../src/bin/removeCssFile");
 
 // import all json config files
-const { config } = require('../src/config/config.test');
+const { config } = require('../../src/config/config.test');
 const { BASE_DIR } = config.get();
 
 describe(removeCssFile, () => {
@@ -12,7 +12,7 @@ describe(removeCssFile, () => {
         vol.reset();
     });
 
-    it("It should pass if the file style.css has been found and removed", async () => {
+    it("Should pass if the file style.css has been found and removed", async () => {
 
         vol.fromJSON(
             {
@@ -25,7 +25,7 @@ describe(removeCssFile, () => {
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
-    it("It should pass if the file main.js has not been removed", async () => {
+    it("Should pass if the file main.js has not been removed", async () => {
 
         const json = {
             [`${BASE_DIR}/main.js`]: "my js"

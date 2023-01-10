@@ -1,10 +1,10 @@
 const { vol } = require("memfs");
 jest.mock("fs/promises");
 
-const { writeJsonDataToFile } = require("../src/bin/writeJsonDataToFile");
+const { writeJsonDataToFile } = require("../../src/bin/writeJsonDataToFile");
 
 // import all json config files
-const { config } = require('../src/config/config.test');
+const { config } = require('../../src/config/config.test');
 const { JSON_FILE } = config.get();
 
 describe(writeJsonDataToFile, () => {
@@ -12,7 +12,7 @@ describe(writeJsonDataToFile, () => {
         vol.reset();
     });
 
-    it("It should pass if the file package.json has been updated with the data provided", async () => {
+    it("Should pass if the file package.json has been updated with the data provided", async () => {
 
         const data = {
             check: true
@@ -29,7 +29,7 @@ describe(writeJsonDataToFile, () => {
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
-    it("It should pass if the file package.json has been updated with the complex data provided", async () => {
+    it("Should pass if the file package.json has been updated with the complex data provided", async () => {
 
         const data = {
             check: true,
@@ -54,7 +54,7 @@ describe(writeJsonDataToFile, () => {
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
-    it("It should throw an error if called with an empty object", async () => {
+    it("Should throw an error if called with an empty object", async () => {
 
         const data = {
         };
