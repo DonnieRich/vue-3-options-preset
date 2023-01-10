@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`removeCssFile Should pass if the file style.css has been found and removed 1`] = `
-{
-  "/src": null,
-}
-`;
