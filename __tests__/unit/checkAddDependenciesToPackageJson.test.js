@@ -1,15 +1,15 @@
 const { vol } = require("memfs");
 jest.mock("fs/promises");
 
-const { addDependenciesToPackageJson } = require("../src/bin/addDependenciesToPackageJson");
-const { jsonOperations } = require("../src/bin/jsonOperations");
+const { addDependenciesToPackageJson } = require("../../src/bin/addDependenciesToPackageJson");
+const { jsonOperations } = require("../../src/bin/jsonOperations");
 
 // import all json config files
-const { config } = require('../src/config/config.test');
-const stubJson = require('../src/stubs/package.json');
-const baseJson = require('./__jsons__/base.json');
-const updatedJsonBootstrap = require('./__jsons__/updatedJsonBootstrap.json');
-const updatedJsonNoBootstrap = require('./__jsons__/updatedJsonNoBootstrap.json');
+const { config } = require('../../src/config/config.test');
+const stubJson = require('../../src/stubs/package.json');
+const baseJson = require('../__jsons__/base.json');
+const updatedJsonBootstrap = require('../__jsons__/updatedJsonBootstrap.json');
+const updatedJsonNoBootstrap = require('../__jsons__/updatedJsonNoBootstrap.json');
 
 const BASE_FILE = config.get().JSON_FILE;
 const BASE_STUB_FILE = `${config.get().BASE_STUBS_DIR}${BASE_FILE}`;

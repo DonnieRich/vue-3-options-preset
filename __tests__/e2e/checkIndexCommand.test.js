@@ -1,9 +1,9 @@
 // const execa = require('execa');
 const { prepareEnvironment } = require('@gmrchk/cli-testing-library');
 
-const { config } = require('../src/config/config.production');
-const stubJson = require('../src/stubs/package.json');
-const baseJson = require('./__jsons__/base.json');
+const { config } = require('../../src/config/config.production');
+const stubJson = require('../../src/stubs/package.json');
+const baseJson = require('../__jsons__/base.json');
 
 const { BASE_DIR, BASE_STUBS_DIR, JSON_FILE } = config.get();
 const test = prepareEnvironment();

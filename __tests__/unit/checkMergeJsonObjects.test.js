@@ -1,4 +1,4 @@
-const { mergeJsonObjects } = require("../src/bin/mergeJsonObjects");
+const { mergeJsonObjects } = require("../../src/bin/mergeJsonObjects");
 
 describe(mergeJsonObjects, () => {
 

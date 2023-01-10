@@ -1,10 +1,10 @@
 const { vol } = require("memfs");
 jest.mock("fs/promises");
 
-const { writeJsonDataToFile } = require("../src/bin/writeJsonDataToFile");
+const { writeJsonDataToFile } = require("../../src/bin/writeJsonDataToFile");
 
 // import all json config files
-const { config } = require('../src/config/config.test');
+const { config } = require('../../src/config/config.test');
 const { JSON_FILE } = config.get();
 
 describe(writeJsonDataToFile, () => {

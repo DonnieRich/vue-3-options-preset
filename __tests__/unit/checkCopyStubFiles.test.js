@@ -1,10 +1,10 @@
 const { vol } = require("memfs");
 jest.mock("fs/promises");
 
-const { copyStubFiles } = require("../src/bin/copyStubFiles");
+const { copyStubFiles } = require("../../src/bin/copyStubFiles");
 
 // import all json config files
-const { config } = require('../src/config/config.test');
+const { config } = require('../../src/config/config.test');
 const { BASE_DIR, BASE_STUBS_DIR } = config.get();
 
 describe(copyStubFiles, () => {

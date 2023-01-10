@@ -1,4 +1,4 @@
-const { isObjectOrNull } = require('../src/utils/isObjectOrNull');
+const { isObjectOrNull } = require('../../src/utils/isObjectOrNull');
 
 describe(isObjectOrNull, () => {
 
