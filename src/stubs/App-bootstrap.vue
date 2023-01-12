@@ -12,15 +12,17 @@ export default {
     <section class="vue-home">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <a href="https://vitejs.dev" target="_blank">
-                        <img src="/vite.svg" class="logo" alt="Vite logo" />
-                    </a>
-                    <a href="https://vuejs.org/" target="_blank">
-                        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-                    </a>
+                <div class="col-12 d-flex flex-column justify-content-center align-items-center vh-100">
+                    <div class="logos">
+                        <a href="https://vitejs.dev" target="_blank">
+                            <img src="/vite.svg" class="logo" alt="Vite logo" />
+                        </a>
+                        <a href="https://vuejs.org/" target="_blank">
+                            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+                        </a>
+                    </div>
+                    <HelloWorld />
                 </div>
-                <HelloWorld />
             </div>
         </div>
     </section>
@@ -30,7 +32,6 @@ export default {
 @use './styles/general.scss';
 
 .vue-home {
-    min-height: 100vh;
     color: #2c3e50;
     background: #181818;
     transition: color 0.5s, background-color 0.5s;
