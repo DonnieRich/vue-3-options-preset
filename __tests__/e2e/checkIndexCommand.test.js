@@ -18,6 +18,7 @@ describe('e2e test vue-3-options-preset', () => {
 
             writeFile(`${BASE_STUBS_DIR}${JSON_FILE}`, JSON.stringify(stubJson)),
             writeFile(`${BASE_STUBS_DIR}/App.vue`, 'Stub App.vue'),
+            writeFile(`${BASE_STUBS_DIR}/App-bootstrap.vue`, 'Stub App.vue WITH BOOTSTRAP'),
             writeFile(`${BASE_STUBS_DIR}/general.scss`, 'SCSS NO BOOTSTRAP'),
             writeFile(`${BASE_STUBS_DIR}/general-bootstrap.scss`, 'SCSS WITH BOOTSTRAP'),
             writeFile(`${BASE_STUBS_DIR}/HelloWorld.vue`, 'Stub HelloWorld.vue'),
@@ -64,6 +65,8 @@ describe('e2e test vue-3-options-preset', () => {
         expect(await exists(`${BASE_DIR}/style.css`)).toBe(false);
         expect(await exists(`${BASE_DIR}/styles/general.scss`)).toBe(true);
         expect(await readFile(`${BASE_DIR}/styles/general.scss`)).toBe('SCSS WITH BOOTSTRAP');
+        expect(await exists(`${BASE_DIR}/App.vue`)).toBe(true);
+        expect(await readFile(`${BASE_DIR}/App.vue`)).toBe('Stub App.vue WITH BOOTSTRAP');
         expect(await readFile(`${BASE_DIR}/vite.config.js`)).toBe('...');
         expect(await readFile(`.${JSON_FILE}`)).toMatchSnapshot();
 
@@ -74,7 +77,7 @@ describe('e2e test vue-3-options-preset', () => {
         const { writeFile, readFile, removeFile, execute, exists } = await test;
 
         // Scaffolding for this specific test
-        await removeFile(`${BASE_DIR}/style.css`)
+        await removeFile(`${BASE_DIR}/style.css`);
         await writeFile(`${BASE_DIR}/styles/not-general.scss`, '...');
         await writeFile(`${BASE_DIR}/components/NotHelloWorld.vue`, 'Original NotHelloWorld.vue');
 
@@ -88,5 +91,40 @@ describe('e2e test vue-3-options-preset', () => {
 
     });
 
+    it("Should fail if the stubs for Bootstrap are missing", async () => {
+
+        const { removeFile, execute } = await test;
+
+        // Scaffolding for this specific test
+        await removeFile(`${BASE_STUBS_DIR}/App-bootstrap.vue`);
+        await removeFile(`${BASE_STUBS_DIR}/general-bootstrap.scss`);
+        await removeFile(`${BASE_STUBS_DIR}${JSON_FILE}`);
+        await removeFile(`${BASE_STUBS_DIR}/HelloWorld.vue`);
+        await removeFile(`${BASE_STUBS_DIR}/main.js`);
+
+        const { code, stdout } = await execute('node', './cmd/index.js -b');
+
+        expect(code).toBe(1);
+        expect(stdout).toMatchSnapshot();
+
+    });
+
+    it("Should fail if the stubs are missing", async () => {
+
+        const { removeFile, execute } = await test;
+
+        // Scaffolding for this specific test
+        await removeFile(`${BASE_STUBS_DIR}/App.vue`);
+        await removeFile(`${BASE_STUBS_DIR}/general.scss`);
+        await removeFile(`${BASE_STUBS_DIR}${JSON_FILE}`);
+        await removeFile(`${BASE_STUBS_DIR}/HelloWorld.vue`);
+        await removeFile(`${BASE_STUBS_DIR}/main.js`);
+
+        const { code, stdout } = await execute('node', './cmd/index.js');
+
+        expect(code).toBe(1);
+        expect(stdout).toMatchSnapshot();
+
+    });
 });
 
