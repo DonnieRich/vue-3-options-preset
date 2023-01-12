@@ -34,7 +34,7 @@ describe(copyStubFiles, () => {
 
         vol.fromJSON(
             {
-                [`${BASE_STUBS_DIR}/App.vue`]: "...",
+                [`${BASE_STUBS_DIR}/App-bootstrap.vue`]: "...",
                 [`${BASE_STUBS_DIR}/general-bootstrap.scss`]: "...",
                 [`${BASE_STUBS_DIR}/HelloWorld.vue`]: "...",
                 [`${BASE_STUBS_DIR}/main.js`]: "...",
@@ -45,6 +45,25 @@ describe(copyStubFiles, () => {
         );
 
         await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, true);
+        expect(vol.toJSON()).toMatchSnapshot();
+    });
+
+    it("Should fail if the stub files for Bootstrap are missing", async () => {
+
+        vol.fromJSON(
+            {
+                [`${BASE_STUBS_DIR}/App.vue`]: "...",
+                [`${BASE_STUBS_DIR}/general.scss`]: "...",
+                [`${BASE_STUBS_DIR}/HelloWorld.vue`]: "...",
+                [`${BASE_STUBS_DIR}/main.js`]: "...",
+                [`${BASE_DIR}/justAFile.js`]: "...",
+                [`${BASE_DIR}/components/HelloWorld.vue`]: "old component"
+            },
+            "/"
+        );
+
+        await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, true);
+        await expect(() => copyStubFiles(BASE_STUBS_DIR, BASE_DIR, true)).rejects.toThrow(Error);
         expect(vol.toJSON()).toMatchSnapshot();
     });
 });
