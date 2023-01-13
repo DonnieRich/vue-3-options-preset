@@ -11,8 +11,8 @@ This package update the default Vite + Vue 3 scaffolding installation:
 
 - replacing the use of the *Composition API* with the *Options API*
 - replacing *style.css* with *styles/general.scss*
-- installing *SASS*
-- **optional**: installing *Bootstrap*
+- adding *SASS* dependency
+- **optional**: adding *Bootstrap* dependencies
 
 ## Installation
 
@@ -34,6 +34,14 @@ To add Bootstrap along all the other options, add `-b` at the end of the command
 
 ```
 npx preset-options-api -b
+```
+
+As last step run both:
+
+```
+npm i
+
+npm run dev
 ```
 
 ## NOTE
