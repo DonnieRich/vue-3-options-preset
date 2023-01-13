@@ -1,11 +1,11 @@
 #! /usr/bin/env node
-const { removeCssFile } = require("../src/bin/removeCssFile");
+const { cleanupScaffolding } = require("../src/bin/cleanupScaffolding");
 const { copyStubFiles } = require("../src/bin/copyStubFiles");
 const { addDependenciesToPackageJson } = require("../src/bin/addDependenciesToPackageJson");
 
 //const env = process.env.NODE_ENV || 'development';
 const { config } = require(`../src/config/config.production`);
-const { BASE_DIR, BASE_STUBS_DIR, JSON_FILE } = config.get();
+const { BASE_DIR, BASE_STUBS_DIR, JSON_FILE, COMPONENT_FOLDER, EXTENSIONS } = config.get();
 
 // Get the optional argv
 const argv = process.argv.slice(2);
@@ -16,7 +16,7 @@ const init = async () => {
         let bootstrap = false;
 
         // all the commands run from the root
-        await removeCssFile(BASE_DIR);
+        await cleanupScaffolding([BASE_DIR, `${BASE_DIR}${COMPONENT_FOLDER}`], EXTENSIONS);
 
         if (argv[0] === '-b') {
             bootstrap = true;
