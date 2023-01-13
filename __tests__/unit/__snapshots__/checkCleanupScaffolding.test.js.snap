@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cleanupScaffolding Should pass if all files matching EXTENSIONS have been removed 1`] = `
+{
+  "/src/components": null,
+  "/src/main.js": "my main.js",
+  "/src/styles/logo.svg": "my logo.svg",
+}
+`;
+
+exports[`cleanupScaffolding Should pass if all files matching EXTENSIONS have been removed, except App.vue 1`] = `
+{
+  "/src/App.vue": "my App.vue",
+  "/src/components": null,
+  "/src/main.js": "my main.js",
+}
+`;
