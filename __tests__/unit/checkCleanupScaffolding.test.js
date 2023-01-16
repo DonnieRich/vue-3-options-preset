@@ -46,4 +46,23 @@ describe(cleanupScaffolding, () => {
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
+    it("Should pass if no files are removed", async () => {
+
+        const json = {
+            [`${BASE_DIR}/pages/HomePage.vue`]: "my HomePage.vue",
+            [`${BASE_DIR}/assets/logo.svg`]: "my logo.svg",
+            [`${BASE_DIR}/main.js`]: "my main.js",
+            [`/package.json`]: "my package.json",
+            [`${BASE_DIR}/App.vue`]: "my App.vue",
+        };
+
+        vol.fromJSON(
+            json,
+            "/"
+        );
+
+        await cleanupScaffolding(['/', `${BASE_DIR}`, `${BASE_DIR}/assets`], EXTENSIONS);
+        expect(vol.toJSON()).toEqual(json)
+    });
+
 });
