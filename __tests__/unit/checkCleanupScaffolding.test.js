@@ -6,7 +6,7 @@ const { fileOperations } = require("../../src/bin/fileOperations");
 
 // import all json config files
 const { config } = require('../../src/config/config.test');
-const { BASE_DIR, EXTENSIONS } = config.get();
+const { BASE_DIR, COMPONENT_FOLDER, EXTENSIONS } = config.get();
 
 // preparing the mock modules
 let mockRemoveFile;
@@ -35,7 +35,7 @@ describe(cleanupScaffolding, () => {
             "/"
         );
 
-        await cleanupScaffolding([`${BASE_DIR}/styles`, `${BASE_DIR}/components`], EXTENSIONS);
+        await cleanupScaffolding([`${BASE_DIR}/styles`, `${BASE_DIR}${COMPONENT_FOLDER}`], EXTENSIONS);
 
         // check how many calls to mockRemoveFile
         expect(mockRemoveFile).toHaveBeenCalledTimes(4);
@@ -55,13 +55,13 @@ describe(cleanupScaffolding, () => {
             "/"
         );
 
-        await cleanupScaffolding([`${BASE_DIR}`, `${BASE_DIR}/components`], EXTENSIONS);
+        await cleanupScaffolding([`${BASE_DIR}`, `${BASE_DIR}${COMPONENT_FOLDER}`], EXTENSIONS);
 
         // check calls to mockRemoveFile
         expect(mockRemoveFile).toHaveBeenNthCalledWith(1, BASE_DIR, ".css");
         expect(mockRemoveFile).toHaveBeenNthCalledWith(2, BASE_DIR, ".vue");
-        expect(mockRemoveFile).toHaveBeenNthCalledWith(3, `${BASE_DIR}/components`, ".css");
-        expect(mockRemoveFile).toHaveBeenNthCalledWith(4, `${BASE_DIR}/components`, ".vue");
+        expect(mockRemoveFile).toHaveBeenNthCalledWith(3, `${BASE_DIR}${COMPONENT_FOLDER}`, ".css");
+        expect(mockRemoveFile).toHaveBeenNthCalledWith(4, `${BASE_DIR}${COMPONENT_FOLDER}`, ".vue");
 
         expect(vol.toJSON()).toMatchSnapshot();
     });
