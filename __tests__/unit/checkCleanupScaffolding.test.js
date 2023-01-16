@@ -2,14 +2,23 @@ const { vol } = require("memfs");
 jest.mock("fs/promises");
 
 const { cleanupScaffolding } = require("../../src/bin/cleanupScaffolding");
+const { fileOperations } = require("../../src/bin/fileOperations");
 
 // import all json config files
 const { config } = require('../../src/config/config.test');
 const { BASE_DIR, EXTENSIONS } = config.get();
 
+// preparing the mock modules
+let mockRemoveFile;
+
 describe(cleanupScaffolding, () => {
     beforeEach(() => {
         vol.reset();
+        mockRemoveFile = jest.spyOn(fileOperations, "removeFile");
+    });
+
+    afterEach(() => {
+        mockRemoveFile.mockRestore();
     });
 
     it("Should pass if all files matching EXTENSIONS have been removed", async () => {
@@ -27,6 +36,10 @@ describe(cleanupScaffolding, () => {
         );
 
         await cleanupScaffolding([`${BASE_DIR}/styles`, `${BASE_DIR}/components`], EXTENSIONS);
+
+        // check how many calls to mockRemoveFile
+        expect(mockRemoveFile).toHaveBeenCalledTimes(4);
+
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
@@ -43,6 +56,13 @@ describe(cleanupScaffolding, () => {
         );
 
         await cleanupScaffolding([`${BASE_DIR}`, `${BASE_DIR}/components`], EXTENSIONS);
+
+        // check calls to mockRemoveFile
+        expect(mockRemoveFile).toHaveBeenNthCalledWith(1, BASE_DIR, ".css");
+        expect(mockRemoveFile).toHaveBeenNthCalledWith(2, BASE_DIR, ".vue");
+        expect(mockRemoveFile).toHaveBeenNthCalledWith(3, `${BASE_DIR}/components`, ".css");
+        expect(mockRemoveFile).toHaveBeenNthCalledWith(4, `${BASE_DIR}/components`, ".vue");
+
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
@@ -62,6 +82,10 @@ describe(cleanupScaffolding, () => {
         );
 
         await cleanupScaffolding(['/', `${BASE_DIR}`, `${BASE_DIR}/assets`], EXTENSIONS);
+
+        // check how many calls to mockRemoveFile
+        expect(mockRemoveFile).toHaveBeenCalledTimes(6);
+
         expect(vol.toJSON()).toEqual(json)
     });
 
