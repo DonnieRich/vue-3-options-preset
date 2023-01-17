@@ -5,7 +5,7 @@ const { addDependenciesToPackageJson } = require("../src/bin/addDependenciesToPa
 
 //const env = process.env.NODE_ENV || 'development';
 const { config } = require(`../src/config/config.production`);
-const { BASE_DIR, BASE_STUBS_DIR, JSON_FILE, COMPONENT_FOLDER, EXTENSIONS } = config.get();
+const { BASE_DIR, BASE_STUBS_DIR, JSON_FILE, COMPONENT_FOLDER, EXTENSIONS, REMOVABLE_FOLDERS } = config.get();
 
 // Get the optional argv
 const argv = process.argv.slice(2);
@@ -16,7 +16,7 @@ const init = async () => {
         let bootstrap = false;
 
         // all the commands run from the root
-        await cleanupScaffolding([BASE_DIR, `${BASE_DIR}${COMPONENT_FOLDER}`, `${BASE_DIR}${COMPONENT_FOLDER}/icons`], EXTENSIONS);
+        await cleanupScaffolding([BASE_DIR, `${BASE_DIR}${COMPONENT_FOLDER}`, `${BASE_DIR}${COMPONENT_FOLDER}/icons`], EXTENSIONS, REMOVABLE_FOLDERS);
 
         if (argv[0] === '-b') {
             bootstrap = true;

@@ -1,3 +1,4 @@
 const { removeFile } = require("./removeFile");
+const { removeEmptyFolders } = require("./removeEmptyFolders");
 
-module.exports = { fileOperations: { removeFile } };
+module.exports = { fileOperations: { removeFile, removeEmptyFolders } };
