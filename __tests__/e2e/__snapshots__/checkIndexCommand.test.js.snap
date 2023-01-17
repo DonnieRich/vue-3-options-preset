@@ -5,6 +5,8 @@ exports[`e2e test vue-3-options-preset Should fail if the command is not run on 
   "♻️  Removing old files...",
   "✅  HelloWorld.vue removed!",
   "✅  NotHelloWorld.vue removed!",
+  "⚠️  ./src/components/icons does not exist...",
+  "⚠️  ./src/components/icons does not exist...",
   "📑  Copying new files...",
   "❌  Error! Cannot complete the scaffolding process.",
 ]
@@ -15,6 +17,8 @@ exports[`e2e test vue-3-options-preset Should fail if the stubs are missing 1`] 
   "♻️  Removing old files...",
   "✅  style.css removed!",
   "✅  HelloWorld.vue removed!",
+  "⚠️  ./src/components/icons does not exist...",
+  "⚠️  ./src/components/icons does not exist...",
   "📑  Copying new files...",
   "❌  Error! Cannot complete the scaffolding process.",
 ]
@@ -25,16 +29,40 @@ exports[`e2e test vue-3-options-preset Should fail if the stubs for Bootstrap ar
   "♻️  Removing old files...",
   "✅  style.css removed!",
   "✅  HelloWorld.vue removed!",
+  "⚠️  ./src/components/icons does not exist...",
+  "⚠️  ./src/components/icons does not exist...",
   "📑  Copying new files...",
   "❌  Error! Cannot complete the scaffolding process.",
 ]
 `;
+
+exports[`e2e test vue-3-options-preset Should pass if the command is run on the vue-latest scaffolding structure 1`] = `
+[
+  "♻️  Removing old files...",
+  "✅  style.css removed!",
+  "✅  HelloWorld.vue removed!",
+  "✅  AnotherIcon.vue removed!",
+  "✅  MyIcon.vue removed!",
+  "📑  Copying new files...",
+  "📑  Adding dependencies to package.json...",
+  "📑  Reading content of ./node_modules/vue-3-options-preset/src/stubs/package.json...",
+  "📑  Reading content of ./package.json...",
+  "📑  Merging JSON objects...",
+  "📑  Merging JSON objects...",
+  "📑  Writing to ./package.json...",
+  "✅  Your Vue 3 project is now ready! Just run: npm install",
+]
+`;
+
+exports[`e2e test vue-3-options-preset Should pass if the command is run on the vue-latest scaffolding structure 2`] = `"{"license":"MIT","dependencies":{"shelljs":"^0.8.5","@popperjs/core":"^2.11.6","bootstrap":"^5.2.3"},"devDependencies":{"jest":"^29.3.1","memfs":"^3.4.12","sass":"^1.57.1"}}"`;
 
 exports[`e2e test vue-3-options-preset Should pass if the command is run, the scaffolding process is completed and package.json has updated dependencies 1`] = `
 [
   "♻️  Removing old files...",
   "✅  style.css removed!",
   "✅  HelloWorld.vue removed!",
+  "⚠️  ./src/components/icons does not exist...",
+  "⚠️  ./src/components/icons does not exist...",
   "📑  Copying new files...",
   "📑  Adding dependencies to package.json...",
   "📑  Reading content of ./node_modules/vue-3-options-preset/src/stubs/package.json...",
@@ -53,6 +81,8 @@ exports[`e2e test vue-3-options-preset Should pass if the command is run, the sc
   "♻️  Removing old files...",
   "✅  style.css removed!",
   "✅  HelloWorld.vue removed!",
+  "⚠️  ./src/components/icons does not exist...",
+  "⚠️  ./src/components/icons does not exist...",
   "📑  Copying new files...",
   "📑  Adding dependencies to package.json...",
   "📑  Reading content of ./node_modules/vue-3-options-preset/src/stubs/package.json...",
