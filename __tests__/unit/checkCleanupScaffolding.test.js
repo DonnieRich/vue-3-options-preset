@@ -28,8 +28,8 @@ describe(cleanupScaffolding, () => {
                 [`${BASE_DIR}/styles/style.css`]: "my style.css",
                 [`${BASE_DIR}/styles/base.css`]: "my base.css",
                 [`${BASE_DIR}/styles/logo.svg`]: "my logo.svg",
-                [`${BASE_DIR}/components/FirstComponent.vue`]: "my FirstComponent.vue",
-                [`${BASE_DIR}/components/SecondComponent.vue`]: "my SecondComponent.vue",
+                [`${BASE_DIR}${COMPONENT_FOLDER}/FirstComponent.vue`]: "my FirstComponent.vue",
+                [`${BASE_DIR}${COMPONENT_FOLDER}/SecondComponent.vue`]: "my SecondComponent.vue",
                 [`${BASE_DIR}/main.js`]: "my main.js"
             },
             "/"
@@ -47,7 +47,7 @@ describe(cleanupScaffolding, () => {
 
         vol.fromJSON(
             {
-                [`${BASE_DIR}/components/FirstComponent.vue`]: "my FirstComponent.vue",
+                [`${BASE_DIR}${COMPONENT_FOLDER}/FirstComponent.vue`]: "my FirstComponent.vue",
                 [`${BASE_DIR}/main.js`]: "my main.js",
                 [`${BASE_DIR}/style.css`]: "my style.css",
                 [`${BASE_DIR}/App.vue`]: "my App.vue",
@@ -87,6 +87,51 @@ describe(cleanupScaffolding, () => {
         expect(mockRemoveFile).toHaveBeenCalledTimes(6);
 
         expect(vol.toJSON()).toEqual(json)
+    });
+
+    it("Should pass if all files are removed", async () => {
+
+        const json = {
+            [`${BASE_DIR}${COMPONENT_FOLDER}/FirstComponent.vue`]: "my FirstComponent.vue",
+            [`${BASE_DIR}${COMPONENT_FOLDER}/SecondComponent.vue`]: "my SecondComponent.vue",
+            [`${BASE_DIR}${COMPONENT_FOLDER}/icons/FirstIcon.vue`]: "my FirstIcon.vue",
+            [`${BASE_DIR}${COMPONENT_FOLDER}/icons/SecondIcon.vue`]: "my SecondIcon.vue",
+        };
+
+        vol.fromJSON(
+            json,
+            "/"
+        );
+
+        await cleanupScaffolding(['/', `${BASE_DIR}`, `${BASE_DIR}${COMPONENT_FOLDER}`, `${BASE_DIR}${COMPONENT_FOLDER}/icons`], EXTENSIONS);
+
+        // check how many calls to mockRemoveFile
+        expect(mockRemoveFile).toHaveBeenCalledTimes(8);
+
+        expect(vol.toJSON()).toMatchSnapshot();
+    });
+
+    it("Should pass if all files are removed, even if the icon folder is missing", async () => {
+
+        const json = {
+            [`${BASE_DIR}${COMPONENT_FOLDER}/FirstComponent.vue`]: "my FirstComponent.vue",
+            [`${BASE_DIR}${COMPONENT_FOLDER}/SecondComponent.vue`]: "my SecondComponent.vue",
+            [`${BASE_DIR}/main.js`]: "my main.js",
+            [`/package.json`]: "my package.json",
+            [`${BASE_DIR}/App.vue`]: "my App.vue",
+        };
+
+        vol.fromJSON(
+            json,
+            "/"
+        );
+
+        await cleanupScaffolding(['/', `${BASE_DIR}`, `${BASE_DIR}${COMPONENT_FOLDER}`, `${BASE_DIR}${COMPONENT_FOLDER}/icons`], EXTENSIONS);
+
+        // check how many calls to mockRemoveFile
+        expect(mockRemoveFile).toHaveBeenCalledTimes(8);
+
+        expect(vol.toJSON()).toMatchSnapshot();
     });
 
 });

@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`cleanupScaffolding Should pass if all files are removed 1`] = `
+{
+  "/src/components/icons": null,
+}
+`;
+
+exports[`cleanupScaffolding Should pass if all files are removed, even if the icon folder is missing 1`] = `
+{
+  "/package.json": "my package.json",
+  "/src/App.vue": "my App.vue",
+  "/src/components/FirstComponent.vue": "my FirstComponent.vue",
+  "/src/components/SecondComponent.vue": "my SecondComponent.vue",
+  "/src/main.js": "my main.js",
+}
+`;
+
 exports[`cleanupScaffolding Should pass if all files matching EXTENSIONS have been removed 1`] = `
 {
   "/src/components": null,
