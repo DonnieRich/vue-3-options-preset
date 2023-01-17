@@ -10,8 +10,7 @@ exports[`cleanupScaffolding Should pass if all files are removed, even if the ic
 {
   "/package.json": "my package.json",
   "/src/App.vue": "my App.vue",
-  "/src/components/FirstComponent.vue": "my FirstComponent.vue",
-  "/src/components/SecondComponent.vue": "my SecondComponent.vue",
+  "/src/components": null,
   "/src/main.js": "my main.js",
 }
 `;
