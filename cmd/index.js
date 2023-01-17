@@ -16,7 +16,7 @@ const init = async () => {
         let bootstrap = false;
 
         // all the commands run from the root
-        await cleanupScaffolding([BASE_DIR, `${BASE_DIR}${COMPONENT_FOLDER}`], EXTENSIONS);
+        await cleanupScaffolding([BASE_DIR, `${BASE_DIR}${COMPONENT_FOLDER}`, `${BASE_DIR}${COMPONENT_FOLDER}/icons`], EXTENSIONS);
 
         if (argv[0] === '-b') {
             bootstrap = true;
