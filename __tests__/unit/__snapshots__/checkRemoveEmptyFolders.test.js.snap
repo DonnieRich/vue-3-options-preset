@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`removeEmptyFolders Should pass if the empty folder is removed 1`] = `
+{
+  "/src/App.vue": "my App.vue",
+  "/src/components/HelloWorld.vue": "my HelloWorld.vue",
+  "/src/components/icons": null,
+  "/src/styles/style.css": "my style.css",
+}
+`;
