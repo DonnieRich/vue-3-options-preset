@@ -6,7 +6,7 @@ const { config } = require('../config/config.production');
 const { PROTECTED_FILES } = config.get();
 
 const removeFile = async (baseDir, extension) => {
-    await fs.access(baseDir, constants.F_OK)
+    return fs.access(baseDir, constants.F_OK)
         .then(async () => {
             for (const file of await fs.readdir(baseDir)) {
                 if (file.includes(extension) && !PROTECTED_FILES.includes(file)) {
