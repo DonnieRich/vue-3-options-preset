@@ -7,7 +7,7 @@ const config = {
             "COMPONENT_FOLDER": "/components",
             "EXTENSIONS": [".css", ".vue"],
             "PROTECTED_FILES": ["App.vue"],
-            "REMOVABLE_FOLDERS": ["icons"]
+            "REMOVABLE_FOLDERS": ["./src/components/icons"]
         }
     }
 };
