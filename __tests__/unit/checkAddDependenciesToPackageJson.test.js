@@ -5,7 +5,7 @@ const { addDependenciesToPackageJson } = require("../../src/bin/addDependenciesT
 const { jsonOperations } = require("../../src/bin/jsonOperations");
 
 // import all json config files
-const { config } = require('../../src/config/config.test');
+const { config } = require('../../src/config/config');
 const stubJson = require('../../src/stubs/package.json');
 const baseJson = require('../__jsons__/base.json');
 const updatedJsonBootstrap = require('../__jsons__/updatedJsonBootstrap.json');

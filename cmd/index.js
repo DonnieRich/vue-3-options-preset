@@ -3,8 +3,8 @@ const { cleanupScaffolding } = require("../src/bin/cleanupScaffolding");
 const { copyStubFiles } = require("../src/bin/copyStubFiles");
 const { addDependenciesToPackageJson } = require("../src/bin/addDependenciesToPackageJson");
 
-//const env = process.env.NODE_ENV || 'development';
-const { config } = require(`../src/config/config.production`);
+//process.env.NODE_ENV = "production";
+const { config } = require(`../src/config/config`);
 const { BASE_DIR, BASE_STUBS_DIR, JSON_FILE, COMPONENT_FOLDER, EXTENSIONS, REMOVABLE_FOLDERS } = config.get();
 
 // Get the optional argv
@@ -30,6 +30,7 @@ const init = async () => {
     } catch (err) {
         console.log('\x1b[31m%s\x1b[0m', `❌  Error! Cannot complete the scaffolding process.`);
         process.exitCode = 1;
+        throw new Error(err);
     }
 };
 
