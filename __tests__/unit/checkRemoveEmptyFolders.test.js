@@ -4,7 +4,7 @@ jest.mock("fs/promises");
 const { removeEmptyFolders } = require("../../src/bin/removeEmptyFolders");
 
 // import all json config files
-const { config } = require('../../src/config/config.test');
+const { config } = require('../../src/config/config');
 const { BASE_DIR, COMPONENT_FOLDER, REMOVABLE_FOLDERS } = config.get();
 
 describe(removeEmptyFolders, () => {
@@ -30,7 +30,7 @@ describe(removeEmptyFolders, () => {
             .resolves.toBe(`✅  ${REMOVABLE_FOLDERS[0]} directory removed!`);
     });
 
-    it(`Should fail silently if the ${REMOVABLE_FOLDERS[0]} folder is not empty`, async () => {
+    it(`Should fail if the ${REMOVABLE_FOLDERS[0]} folder is not empty`, async () => {
 
         const json = {
             [`${BASE_DIR}${COMPONENT_FOLDER}/HelloWorld.vue`]: "my HelloWorld.vue",
@@ -59,10 +59,10 @@ describe(removeEmptyFolders, () => {
         );
 
         await expect(removeEmptyFolders(`${REMOVABLE_FOLDERS[0]}`))
-            .rejects.toThrow(`ENOENT: no such file or directory, rmdir '${REMOVABLE_FOLDERS[0]}'`);
+            .resolves.toBe(`ENOENT: no such file or directory, rmdir '${REMOVABLE_FOLDERS[0]}'`);
     });
 
-    it(`Should fail silently if the /do-not-remove folder is not in the REMOVABLE_FOLDERS array`, async () => {
+    it(`Should fail if the /do-not-remove folder is not in the REMOVABLE_FOLDERS array`, async () => {
 
         const json = {
             [`${BASE_DIR}/styles/style.css`]: "my style.css",
@@ -76,6 +76,6 @@ describe(removeEmptyFolders, () => {
         );
 
         await expect(removeEmptyFolders('/do-not-remove'))
-            .rejects.toThrow('⚠️  /do-not-remove directory should not be removed!');
+            .resolves.toBe('⚠️  /do-not-remove directory should not be removed!');
     });
 });
