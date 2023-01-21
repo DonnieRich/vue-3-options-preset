@@ -9,7 +9,7 @@
         "test-coverage": "jest --coverage ./__tests__"
     },
     "bin": {
-        "preset-options-api": "./cmd/index.js"
+        "preset-options-api": "cross-env NODE_ENV=production ./cmd/index.js"
     },
     "repository": {
         "type": "git",
