@@ -2,10 +2,11 @@ const fs = require("fs/promises");
 const path = require("path");
 const { constants } = require("fs");
 
-const { config } = require('../config/config.production');
+const { config } = require('../config/config');
 const { PROTECTED_FILES } = config.get();
 
 const removeFile = async (baseDir, extension) => {
+    // TODO: use the same style of removeEmptyFolders.js
     return fs.access(baseDir, constants.F_OK)
         .then(async () => {
             for (const file of await fs.readdir(baseDir)) {

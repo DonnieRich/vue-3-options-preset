@@ -4,7 +4,7 @@ jest.mock("fs/promises");
 const { removeFile } = require("../../src/bin/removeFile");
 
 // import all json config files
-const { config } = require('../../src/config/config.test');
+const { config } = require('../../src/config/config');
 const { BASE_DIR } = config.get();
 
 describe(removeFile, () => {
