@@ -1,6 +1,6 @@
 const { fileOperations } = require('./fileOperations');
 
-const cleanupScaffolding = async (paths = [], extensions = [], removableFolders = []) => {
+const cleanupScaffolding = async (paths = [], extensions = [], removable_folders = []) => {
     console.log('\x1b[37m%s\x1b[0m', '♻️  Removing old files...');
 
     for (const path of paths) {
@@ -8,8 +8,9 @@ const cleanupScaffolding = async (paths = [], extensions = [], removableFolders 
             await fileOperations.removeFile(path, extension);
         }
     }
-
-    await fileOperations.removeEmptyFolders(paths, removableFolders);
+    for (const folder of removable_folders) {
+        await fileOperations.removeEmptyFolders(folder);
+    }
 };
 
 module.exports = { cleanupScaffolding };

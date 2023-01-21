@@ -5,20 +5,23 @@ const { cleanupScaffolding } = require("../../src/bin/cleanupScaffolding");
 const { fileOperations } = require("../../src/bin/fileOperations");
 
 // import all json config files
-const { config } = require('../../src/config/config.test');
-const { BASE_DIR, COMPONENT_FOLDER, EXTENSIONS } = config.get();
+const { config } = require('../../src/config/config');
+const { BASE_DIR, COMPONENT_FOLDER, EXTENSIONS, REMOVABLE_FOLDERS } = config.get();
 
 // preparing the mock modules
 let mockRemoveFile;
+let mockRemoveEmptyFolders;
 
 describe(cleanupScaffolding, () => {
     beforeEach(() => {
         vol.reset();
         mockRemoveFile = jest.spyOn(fileOperations, "removeFile");
+        mockRemoveEmptyFolders = jest.spyOn(fileOperations, "removeEmptyFolders");
     });
 
     afterEach(() => {
         mockRemoveFile.mockRestore();
+        mockRemoveEmptyFolders.mockRestore();
     });
 
     it("Should pass if all files matching EXTENSIONS have been removed", async () => {
@@ -35,10 +38,11 @@ describe(cleanupScaffolding, () => {
             "/"
         );
 
-        await cleanupScaffolding([`${BASE_DIR}/styles`, `${BASE_DIR}${COMPONENT_FOLDER}`], EXTENSIONS);
+        await cleanupScaffolding([`${BASE_DIR}/styles`, `${BASE_DIR}${COMPONENT_FOLDER}`], EXTENSIONS, REMOVABLE_FOLDERS);
 
         // check how many calls to mockRemoveFile
         expect(mockRemoveFile).toHaveBeenCalledTimes(4);
+        expect(mockRemoveEmptyFolders).toHaveBeenCalledTimes(REMOVABLE_FOLDERS.length);
 
         expect(vol.toJSON()).toMatchSnapshot();
     });
@@ -63,6 +67,8 @@ describe(cleanupScaffolding, () => {
         expect(mockRemoveFile).toHaveBeenNthCalledWith(3, `${BASE_DIR}${COMPONENT_FOLDER}`, ".css");
         expect(mockRemoveFile).toHaveBeenNthCalledWith(4, `${BASE_DIR}${COMPONENT_FOLDER}`, ".vue");
 
+        expect(mockRemoveEmptyFolders).toHaveBeenCalledTimes(0);
+
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
@@ -81,7 +87,7 @@ describe(cleanupScaffolding, () => {
             "/"
         );
 
-        await cleanupScaffolding(['/', `${BASE_DIR}`, `${BASE_DIR}/assets`], EXTENSIONS);
+        await cleanupScaffolding(['/', `${BASE_DIR}`, `${BASE_DIR}/assets`], EXTENSIONS, REMOVABLE_FOLDERS);
 
         // check how many calls to mockRemoveFile
         expect(mockRemoveFile).toHaveBeenCalledTimes(6);
@@ -89,7 +95,7 @@ describe(cleanupScaffolding, () => {
         expect(vol.toJSON()).toEqual(json)
     });
 
-    it("Should pass if all files are removed", async () => {
+    it("Should pass if all files and the /icon folder are removed", async () => {
 
         const json = {
             [`${BASE_DIR}${COMPONENT_FOLDER}/FirstComponent.vue`]: "my FirstComponent.vue",
@@ -103,10 +109,12 @@ describe(cleanupScaffolding, () => {
             "/"
         );
 
-        await cleanupScaffolding(['/', `${BASE_DIR}`, `${BASE_DIR}${COMPONENT_FOLDER}`, `${BASE_DIR}${COMPONENT_FOLDER}/icons`], EXTENSIONS);
+        await cleanupScaffolding(['/', `${BASE_DIR}`, `${BASE_DIR}${COMPONENT_FOLDER}`, `${BASE_DIR}${COMPONENT_FOLDER}/icons`], EXTENSIONS, REMOVABLE_FOLDERS);
 
         // check how many calls to mockRemoveFile
         expect(mockRemoveFile).toHaveBeenCalledTimes(8);
+
+        expect(mockRemoveEmptyFolders).toHaveBeenNthCalledWith(1, REMOVABLE_FOLDERS[0]);
 
         expect(vol.toJSON()).toMatchSnapshot();
     });
@@ -126,10 +134,11 @@ describe(cleanupScaffolding, () => {
             "/"
         );
 
-        await cleanupScaffolding(['/', `${BASE_DIR}`, `${BASE_DIR}${COMPONENT_FOLDER}`, `${BASE_DIR}${COMPONENT_FOLDER}/icons`], EXTENSIONS);
+        await cleanupScaffolding(['/', `${BASE_DIR}`, `${BASE_DIR}${COMPONENT_FOLDER}`, `${BASE_DIR}${COMPONENT_FOLDER}/icons`], EXTENSIONS, REMOVABLE_FOLDERS);
 
         // check how many calls to mockRemoveFile
         expect(mockRemoveFile).toHaveBeenCalledTimes(8);
+        expect(mockRemoveEmptyFolders).toHaveBeenNthCalledWith(1, REMOVABLE_FOLDERS[0]);
 
         expect(vol.toJSON()).toMatchSnapshot();
     });

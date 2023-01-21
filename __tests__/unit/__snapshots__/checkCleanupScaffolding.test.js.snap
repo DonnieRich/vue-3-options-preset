@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`cleanupScaffolding Should pass if all files are removed 1`] = `
+exports[`cleanupScaffolding Should pass if all files and the /icon folder are removed 1`] = `
 {
-  "/src/components/icons": null,
+  "/src/components": null,
 }
 `;
 
