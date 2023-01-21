@@ -26,7 +26,7 @@ describe(removeEmptyFolders, () => {
             "/"
         );
 
-        await expect(removeEmptyFolders(`${REMOVABLE_FOLDERS[0]}`, REMOVABLE_FOLDERS))
+        await expect(removeEmptyFolders(`${REMOVABLE_FOLDERS[0]}`))
             .resolves.toBe(`✅  ${REMOVABLE_FOLDERS[0]} directory removed!`);
     });
 
@@ -41,7 +41,7 @@ describe(removeEmptyFolders, () => {
             "/"
         );
 
-        await expect(removeEmptyFolders(`${REMOVABLE_FOLDERS[0]}`, REMOVABLE_FOLDERS))
+        await expect(removeEmptyFolders(`${REMOVABLE_FOLDERS[0]}`))
             .rejects.toThrow(`ENOTEMPTY: directory not empty, rmdir '${REMOVABLE_FOLDERS[0]}'`);
 
     });
@@ -58,7 +58,7 @@ describe(removeEmptyFolders, () => {
             "/"
         );
 
-        await expect(removeEmptyFolders(`${REMOVABLE_FOLDERS[0]}`, REMOVABLE_FOLDERS))
+        await expect(removeEmptyFolders(`${REMOVABLE_FOLDERS[0]}`))
             .rejects.toThrow(`ENOENT: no such file or directory, rmdir '${REMOVABLE_FOLDERS[0]}'`);
     });
 
@@ -75,7 +75,7 @@ describe(removeEmptyFolders, () => {
             "/"
         );
 
-        await expect(removeEmptyFolders('/do-not-remove', REMOVABLE_FOLDERS))
+        await expect(removeEmptyFolders('/do-not-remove'))
             .rejects.toThrow('⚠️  /do-not-remove directory should not be removed!');
     });
 });

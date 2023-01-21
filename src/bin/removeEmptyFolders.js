@@ -1,8 +1,11 @@
 const fs = require("fs/promises");
 
-const removeEmptyFolders = async (folder, removableFolders) => {
+const { config } = require('../config/config');
+const { REMOVABLE_FOLDERS } = config.get();
+
+const removeEmptyFolders = async (folder) => {
     return await new Promise((resolve, reject) => {
-        if (removableFolders.includes(folder)) {
+        if (REMOVABLE_FOLDERS.includes(folder)) {
             fs.rmdir(folder)
                 .then(async () => {
                     const message = `✅  ${folder} directory removed!`;
