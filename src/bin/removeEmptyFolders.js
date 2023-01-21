@@ -1,21 +1,25 @@
 const fs = require("fs/promises");
-const { constants } = require("fs");
 
-const removeEmptyFolders = async (folders, removableFolders) => {
-    for (const folder of folders) {
+const removeEmptyFolders = async (folder, removableFolders) => {
+    return await new Promise((resolve, reject) => {
         if (removableFolders.includes(folder)) {
-            await fs.access(folder, constants.F_OK)
+            fs.rmdir(folder)
                 .then(async () => {
-                    if (await fs.readdir(folder).length === 0) {
-                        await fs.rmdir(folder);
-                        console.log('\x1b[36m%s\x1b[0m', `✅  ${folder} directory removed!`);
-                    } else {
-                        console.log('\x1b[36m%s\x1b[0m', `❌  ${folder} is not empty...`)
-                    }
+                    const message = `✅  ${folder} directory removed!`;
+                    console.log('\x1b[36m%s\x1b[0m', message);
+                    resolve(message);
                 })
-                .catch((err) => console.log('\x1b[36m%s\x1b[0m', `⚠️  ${folder} does not exist...`));
+                .catch((err) => {
+                    console.log('\x1b[36m%s\x1b[0m', `⚠️  ${err}`);
+                    reject(new Error(err.message));
+                })
+
+        } else {
+            const message = `⚠️  ${folder} directory should not be removed!`;
+            console.log('\x1b[36m%s\x1b[0m', message);
+            reject(new Error(message))
         }
-    }
+    });
 };
 
 module.exports = { removeEmptyFolders };
