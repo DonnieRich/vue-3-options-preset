@@ -9,11 +9,12 @@ const removeEmptyFolders = async (folder) => {
                 resolve(message);
             })
             .catch((err) => {
-                console.log('\x1b[36m%s\x1b[0m', `⚠️  ${err.message}`);
                 // If the folder is missing, resolve with a message
                 if (err.code === 'ENOENT') {
+                    console.log('\x1b[36m%s\x1b[0m', `⚠️  ${folder} does not exist...`);
                     resolve(err.message);
                 } else {
+                    console.log('\x1b[31m%s\x1b[0m', `❌  ${folder} is not empty...`);
                     reject(new Error(err.message));
                 }
             })
