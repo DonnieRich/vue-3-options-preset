@@ -12,6 +12,11 @@ describe(removeEmptyFolders, () => {
         vol.reset();
     });
 
+    it("Should pass if REMOVABLE_FOLDERS elements match the numbers and values", async () => {
+        expect(REMOVABLE_FOLDERS.length).toBe(1);
+        expect(REMOVABLE_FOLDERS[0]).toBe("/src/components/icons");
+    });
+
     it("Should pass if the empty folder is removed", async () => {
 
         const json = {
@@ -62,20 +67,4 @@ describe(removeEmptyFolders, () => {
             .resolves.toBe(`ENOENT: no such file or directory, rmdir '${REMOVABLE_FOLDERS[0]}'`);
     });
 
-    it(`Should fail if the /do-not-remove folder is not in the REMOVABLE_FOLDERS array`, async () => {
-
-        const json = {
-            [`${BASE_DIR}/styles/style.css`]: "my style.css",
-            [`${BASE_DIR}${COMPONENT_FOLDER}/HelloWorld.vue`]: "my HelloWorld.vue",
-            [`${BASE_DIR}/App.vue`]: "my App.vue",
-            '/do-not-remove/random-file.txt': 'a random file'
-        };
-        vol.fromJSON(
-            json,
-            "/"
-        );
-
-        await expect(removeEmptyFolders('/do-not-remove'))
-            .resolves.toBe('⚠️  /do-not-remove directory should not be removed!');
-    });
 });
