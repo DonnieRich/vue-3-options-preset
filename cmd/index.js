@@ -3,8 +3,7 @@ const { cleanupScaffolding } = require("../src/bin/cleanupScaffolding");
 const { copyStubFiles } = require("../src/bin/copyStubFiles");
 const { addDependenciesToPackageJson } = require("../src/bin/addDependenciesToPackageJson");
 
-//process.env.NODE_ENV = "production";
-const { config } = require(`../src/config/config`);
+const { config } = require(`../src/config/config.production`);
 const { BASE_DIR, BASE_STUBS_DIR, JSON_FILE, COMPONENT_FOLDER, EXTENSIONS, REMOVABLE_FOLDERS } = config.get();
 
 // Get the optional argv
