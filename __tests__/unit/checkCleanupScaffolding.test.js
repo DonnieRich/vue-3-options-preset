@@ -91,6 +91,7 @@ describe(cleanupScaffolding, () => {
 
         // check how many calls to mockRemoveFile
         expect(mockRemoveFile).toHaveBeenCalledTimes(6);
+        expect(mockRemoveEmptyFolders).toHaveBeenCalledTimes(1);
 
         expect(vol.toJSON()).toEqual(json)
     });
