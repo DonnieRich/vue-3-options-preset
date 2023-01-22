@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`removeFile Should pass if all .css files have been removed 1`] = `
+{
+  "/src/styles": null,
+}
+`;
+
+exports[`removeFile Should pass if the file App.vue has not been removed 1`] = `
+{
+  "/src/App.vue": "my App vue",
+}
+`;
+
+exports[`removeFile Should pass if the file Test.vue has been removed 1`] = `
+{
+  "/src": null,
+}
+`;
+
+exports[`removeFile Should pass if the file style.css has been removed 1`] = `
+{
+  "/src": null,
+}
+`;

@@ -4,7 +4,7 @@ jest.mock("fs/promises");
 const { getJsonDataFromFile } = require("../../src/bin/getJsonDataFromFile");
 
 // import all json config files
-const { config } = require('../../src/config/config.test');
+const { config } = require('../../src/config/config');
 const { JSON_FILE } = config.get();
 
 describe(getJsonDataFromFile, () => {

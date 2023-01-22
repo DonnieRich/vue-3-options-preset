@@ -33,9 +33,6 @@ describe("Checking stub file presence", () => {
         const appVue = `${BASE_PATH}App-bootstrap.vue`;
         const generalScss = `${BASE_PATH}general-bootstrap.scss`;
 
-        // expect(await fs.exists(appVue)).toBe(true);
-        // expect(await fs.exists(generalScss)).toBe(true);
-
         await Promise.all([
             checkFile(appVue),
             checkFile(generalScss)
