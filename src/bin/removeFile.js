@@ -16,7 +16,11 @@ const removeFile = async (baseDir, extension) => {
                 }
             }
         })
-    //.catch((err) => console.log('\x1b[36m%s\x1b[0m', `⚠️  ${baseDir} does not exist...`));
+        .catch((err) => {
+            if (err.code !== "ENOENT") {
+                console.log('\x1b[36m%s\x1b[0m', `⚠️  cannot access ${baseDir}...`)
+            }
+        });
 
 };
 
