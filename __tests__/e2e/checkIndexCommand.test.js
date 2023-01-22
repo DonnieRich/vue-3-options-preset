@@ -1,4 +1,3 @@
-// const execa = require('execa');
 const { prepareEnvironment } = require('@gmrchk/cli-testing-library');
 
 const { config } = require('../../src/config/config.production');
@@ -36,12 +35,12 @@ describe('e2e test vue-3-options-preset', () => {
     afterEach(async () => {
         const { cleanup } = await test;
         await cleanup();
-    })
+    });
 
     it("Should pass if the command is run, the scaffolding process is completed and package.json has updated devDependencies", async () => {
 
         const { readFile, execute, exists } = await test;
-        const { code, stdout, stderr } = await execute('node', 'NODE_ENV=production ./cmd/index.js');
+        const { code, stdout, stderr } = await execute('node', `./cmd/index.js`);
 
         console.log(stderr);
 
@@ -67,7 +66,7 @@ describe('e2e test vue-3-options-preset', () => {
     it("Should pass if the command is run, the scaffolding process is completed and package.json has updated dependencies", async () => {
 
         const { readFile, execute, exists } = await test;
-        const { code, stdout } = await execute('node', 'NODE_ENV=production ./cmd/index.js -b');
+        const { code, stdout } = await execute('node', `./cmd/index.js -b`);
 
         // check for execution code
         expect(code).toBe(0);
@@ -101,7 +100,7 @@ describe('e2e test vue-3-options-preset', () => {
         await writeFile(`${BASE_DIR}/styles/not-general.scss`, '...');
         await writeFile(`${BASE_DIR}${COMPONENT_FOLDER}/NotHelloWorld.vue`, 'Original NotHelloWorld.vue');
 
-        const { code, stdout } = await execute('node', 'NODE_ENV=production ./cmd/index.js');
+        const { code, stdout } = await execute('node', `./cmd/index.js`);
 
         // check for execution code
         expect(code).toBe(1);
@@ -128,7 +127,7 @@ describe('e2e test vue-3-options-preset', () => {
         await removeFile(`${BASE_STUBS_DIR}/HelloWorld.vue`);
         await removeFile(`${BASE_STUBS_DIR}/main.js`);
 
-        const { code, stdout } = await execute('node', 'NODE_ENV=production ./cmd/index.js -b');
+        const { code, stdout } = await execute('node', `./cmd/index.js -b`);
 
         // check for execution code
         expect(code).toBe(1);
@@ -168,7 +167,7 @@ describe('e2e test vue-3-options-preset', () => {
         writeFile(`${BASE_DIR}${COMPONENT_FOLDER}/icons/MyIcon.vue`, 'Original MyIcon.vue');
         writeFile(`${BASE_DIR}${COMPONENT_FOLDER}/icons/AnotherIcon.vue`, 'Original AnotherIcon.vue');
 
-        const { code, stdout } = await execute('node', 'NODE_ENV=production ./cmd/index.js -b');
+        const { code, stdout } = await execute('node', `./cmd/index.js -b`);
 
         // check for execution code
         expect(code).toBe(0);
