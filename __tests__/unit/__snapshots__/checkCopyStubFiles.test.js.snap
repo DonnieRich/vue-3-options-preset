@@ -2,8 +2,9 @@
 
 exports[`copyStubFiles Should fail if the stub files are missing 1`] = `
 {
-  "/node_modules/vue-3-options-preset/src/stubs/App-bootstrap.vue": "New App.vue WITH BOOTSTRAP",
-  "/node_modules/vue-3-options-preset/src/stubs/general-bootstrap.scss": "General SCSS WITH BOOTSTRAP",
+  "/node_modules/vue-3-options-preset/src/stubs/bootstrap/App.vue": "New App.vue WITH BOOTSTRAP",
+  "/node_modules/vue-3-options-preset/src/stubs/bootstrap/general.scss": "General SCSS WITH BOOTSTRAP",
+  "/node_modules/vue-3-options-preset/src/stubs/bootstrap/main.js": "New main.js WITH BOOTSTRAP",
   "/src/App.vue": "Old App.vue",
   "/src/components/HelloWorld.vue": "old component",
   "/src/justAFile.js": "...",
@@ -12,24 +13,22 @@ exports[`copyStubFiles Should fail if the stub files are missing 1`] = `
 
 exports[`copyStubFiles Should fail if the stub files for Bootstrap are missing 1`] = `
 {
-  "/node_modules/vue-3-options-preset/src/stubs/App.vue": "New App.vue",
-  "/node_modules/vue-3-options-preset/src/stubs/HelloWorld.vue": "New component",
-  "/node_modules/vue-3-options-preset/src/stubs/general.scss": "General SCSS",
-  "/node_modules/vue-3-options-preset/src/stubs/main.js": "New main.js",
+  "/node_modules/vue-3-options-preset/src/stubs/default/App.vue": "New App.vue",
+  "/node_modules/vue-3-options-preset/src/stubs/default/HelloWorld.vue": "New component",
+  "/node_modules/vue-3-options-preset/src/stubs/default/general.scss": "General SCSS",
+  "/node_modules/vue-3-options-preset/src/stubs/default/main.js": "New main.js",
   "/src/App.vue": "Old App.vue",
-  "/src/components/HelloWorld.vue": "New component",
+  "/src/components/HelloWorld.vue": "old component",
   "/src/justAFile.js": "...",
-  "/src/main.js": "New main.js",
-  "/src/styles": null,
 }
 `;
 
 exports[`copyStubFiles Should pass if the stub files are copied in the new location 1`] = `
 {
-  "/node_modules/vue-3-options-preset/src/stubs/App.vue": "New App.vue",
-  "/node_modules/vue-3-options-preset/src/stubs/HelloWorld.vue": "New component",
-  "/node_modules/vue-3-options-preset/src/stubs/general.scss": "General SCSS",
-  "/node_modules/vue-3-options-preset/src/stubs/main.js": "New main.js",
+  "/node_modules/vue-3-options-preset/src/stubs/default/App.vue": "New App.vue",
+  "/node_modules/vue-3-options-preset/src/stubs/default/HelloWorld.vue": "New component",
+  "/node_modules/vue-3-options-preset/src/stubs/default/general.scss": "General SCSS",
+  "/node_modules/vue-3-options-preset/src/stubs/default/main.js": "New main.js",
   "/src/App.vue": "New App.vue",
   "/src/components/HelloWorld.vue": "New component",
   "/src/justAFile.js": "...",
@@ -40,14 +39,14 @@ exports[`copyStubFiles Should pass if the stub files are copied in the new locat
 
 exports[`copyStubFiles Should pass if the stub files are copied in the new location with SCSS file for Bootstrap 1`] = `
 {
-  "/node_modules/vue-3-options-preset/src/stubs/App-bootstrap.vue": "New App.vue WITH BOOTSTRAP",
-  "/node_modules/vue-3-options-preset/src/stubs/HelloWorld.vue": "New component",
-  "/node_modules/vue-3-options-preset/src/stubs/general-bootstrap.scss": "General SCSS WITH BOOTSTRAP",
-  "/node_modules/vue-3-options-preset/src/stubs/main.js": "New main.js",
+  "/node_modules/vue-3-options-preset/src/stubs/bootstrap/App.vue": "New App.vue WITH BOOTSTRAP",
+  "/node_modules/vue-3-options-preset/src/stubs/bootstrap/HelloWorld.vue": "New component",
+  "/node_modules/vue-3-options-preset/src/stubs/bootstrap/general.scss": "General SCSS WITH BOOTSTRAP",
+  "/node_modules/vue-3-options-preset/src/stubs/bootstrap/main.js": "New main.js WITH BOOTSTRAP",
   "/src/App.vue": "New App.vue WITH BOOTSTRAP",
   "/src/components/HelloWorld.vue": "New component",
   "/src/justAFile.js": "...",
-  "/src/main.js": "New main.js",
+  "/src/main.js": "New main.js WITH BOOTSTRAP",
   "/src/styles/general.scss": "General SCSS WITH BOOTSTRAP",
 }
 `;
