@@ -144,4 +144,31 @@ describe(cleanupScaffolding, () => {
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
+    it("Should pass if cleanupScaffolding runs with empty params", async () => {
+
+        await cleanupScaffolding([], [], []);
+
+        // check how many calls to mockRemoveFile
+        expect(mockRemoveFile).toHaveBeenCalledTimes(0);
+        expect(mockRemoveEmptyFolders).toHaveBeenCalledTimes(0);
+    });
+
+    it("Should pass if cleanupScaffolding runs without params", async () => {
+
+        await cleanupScaffolding();
+
+        // check how many calls to mockRemoveFile
+        expect(mockRemoveFile).toHaveBeenCalledTimes(0);
+        expect(mockRemoveEmptyFolders).toHaveBeenCalledTimes(0);
+    });
+
+    it("Should pass if cleanupScaffolding runs only with EXTENSIONS param", async () => {
+
+        await cleanupScaffolding([], EXTENSIONS);
+
+        // check how many calls to mockRemoveFile
+        expect(mockRemoveFile).toHaveBeenCalledTimes(0);
+        expect(mockRemoveEmptyFolders).toHaveBeenCalledTimes(0);
+    });
+
 });
