@@ -16,10 +16,10 @@ describe(copyStubFiles, () => {
 
         vol.fromJSON(
             {
-                [`${BASE_STUBS_DIR}/App.vue`]: "New App.vue",
-                [`${BASE_STUBS_DIR}/general.scss`]: "General SCSS",
-                [`${BASE_STUBS_DIR}/HelloWorld.vue`]: "New component",
-                [`${BASE_STUBS_DIR}/main.js`]: "New main.js",
+                [`${BASE_STUBS_DIR}/default/App.vue`]: "New App.vue",
+                [`${BASE_STUBS_DIR}/default/general.scss`]: "General SCSS",
+                [`${BASE_STUBS_DIR}/default/HelloWorld.vue`]: "New component",
+                [`${BASE_STUBS_DIR}/default/main.js`]: "New main.js",
                 [`${BASE_DIR}/justAFile.js`]: "...",
                 [`${BASE_DIR}/components/HelloWorld.vue`]: "Old component",
                 [`${BASE_DIR}/App.vue`]: "Old App.vue"
@@ -27,7 +27,7 @@ describe(copyStubFiles, () => {
             "/"
         );
 
-        await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, false);
+        await copyStubFiles(`${BASE_STUBS_DIR}/default`, BASE_DIR);
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
@@ -35,10 +35,10 @@ describe(copyStubFiles, () => {
 
         vol.fromJSON(
             {
-                [`${BASE_STUBS_DIR}/App-bootstrap.vue`]: "New App.vue WITH BOOTSTRAP",
-                [`${BASE_STUBS_DIR}/general-bootstrap.scss`]: "General SCSS WITH BOOTSTRAP",
-                [`${BASE_STUBS_DIR}/HelloWorld.vue`]: "New component",
-                [`${BASE_STUBS_DIR}/main.js`]: "New main.js",
+                [`${BASE_STUBS_DIR}/bootstrap/App.vue`]: "New App.vue WITH BOOTSTRAP",
+                [`${BASE_STUBS_DIR}/bootstrap/general.scss`]: "General SCSS WITH BOOTSTRAP",
+                [`${BASE_STUBS_DIR}/bootstrap/HelloWorld.vue`]: "New component",
+                [`${BASE_STUBS_DIR}/bootstrap/main.js`]: "New main.js WITH BOOTSTRAP",
                 [`${BASE_DIR}/justAFile.js`]: "...",
                 [`${BASE_DIR}/components/HelloWorld.vue`]: "Old component",
                 [`${BASE_DIR}/App.vue`]: "Old App.vue"
@@ -46,7 +46,7 @@ describe(copyStubFiles, () => {
             "/"
         );
 
-        await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, true);
+        await copyStubFiles(`${BASE_STUBS_DIR}/bootstrap`, BASE_DIR);
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
@@ -54,10 +54,10 @@ describe(copyStubFiles, () => {
 
         vol.fromJSON(
             {
-                [`${BASE_STUBS_DIR}/App.vue`]: "New App.vue",
-                [`${BASE_STUBS_DIR}/general.scss`]: "General SCSS",
-                [`${BASE_STUBS_DIR}/HelloWorld.vue`]: "New component",
-                [`${BASE_STUBS_DIR}/main.js`]: "New main.js",
+                [`${BASE_STUBS_DIR}/default/App.vue`]: "New App.vue",
+                [`${BASE_STUBS_DIR}/default/general.scss`]: "General SCSS",
+                [`${BASE_STUBS_DIR}/default/HelloWorld.vue`]: "New component",
+                [`${BASE_STUBS_DIR}/default/main.js`]: "New main.js",
                 [`${BASE_DIR}/justAFile.js`]: "...",
                 [`${BASE_DIR}/components/HelloWorld.vue`]: "old component",
                 [`${BASE_DIR}/App.vue`]: "Old App.vue"
@@ -65,7 +65,7 @@ describe(copyStubFiles, () => {
             "/"
         );
 
-        await expect(() => copyStubFiles(BASE_STUBS_DIR, BASE_DIR, true)).rejects.toThrow(Error);
+        await expect(() => copyStubFiles(`${BASE_STUBS_DIR}/bootstrap`, BASE_DIR)).rejects.toThrow(Error);
         expect(vol.toJSON()).toMatchSnapshot();
     });
 
@@ -73,8 +73,9 @@ describe(copyStubFiles, () => {
 
         vol.fromJSON(
             {
-                [`${BASE_STUBS_DIR}/App-bootstrap.vue`]: "New App.vue WITH BOOTSTRAP",
-                [`${BASE_STUBS_DIR}/general-bootstrap.scss`]: "General SCSS WITH BOOTSTRAP",
+                [`${BASE_STUBS_DIR}/bootstrap/App.vue`]: "New App.vue WITH BOOTSTRAP",
+                [`${BASE_STUBS_DIR}/bootstrap/general.scss`]: "General SCSS WITH BOOTSTRAP",
+                [`${BASE_STUBS_DIR}/bootstrap/main.js`]: "New main.js WITH BOOTSTRAP",
                 [`${BASE_DIR}/justAFile.js`]: "...",
                 [`${BASE_DIR}/components/HelloWorld.vue`]: "old component",
                 [`${BASE_DIR}/App.vue`]: "Old App.vue"
@@ -82,7 +83,7 @@ describe(copyStubFiles, () => {
             "/"
         );
 
-        await expect(() => copyStubFiles(BASE_STUBS_DIR, BASE_DIR, true)).rejects.toThrow(Error);
+        await expect(() => copyStubFiles(`${BASE_STUBS_DIR}/default`, BASE_DIR)).rejects.toThrow(Error);
         expect(vol.toJSON()).toMatchSnapshot();
     });
 });

@@ -13,15 +13,17 @@ const init = async () => {
 
     try {
         let bootstrap = false;
+        let stubsFolder = "/default";
 
         // all the commands run from the root
         await cleanupScaffolding([BASE_DIR, `${BASE_DIR}${COMPONENT_FOLDER}`, `${BASE_DIR}${COMPONENT_FOLDER}/icons`], EXTENSIONS, REMOVABLE_FOLDERS);
 
         if (argv[0] === '-b') {
             bootstrap = true;
+            stubsFolder = "/bootstrap";
         }
 
-        await copyStubFiles(BASE_STUBS_DIR, BASE_DIR, bootstrap);
+        await copyStubFiles(`${BASE_STUBS_DIR}${stubsFolder}`, BASE_DIR);
 
         await addDependenciesToPackageJson(`${BASE_STUBS_DIR}${JSON_FILE}`, `.${JSON_FILE}`, bootstrap);
 

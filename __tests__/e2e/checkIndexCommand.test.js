@@ -16,12 +16,14 @@ describe('e2e test vue-3-options-preset', () => {
             writeFile(`.${JSON_FILE}`, JSON.stringify(baseJson)),
 
             writeFile(`${BASE_STUBS_DIR}${JSON_FILE}`, JSON.stringify(stubJson)),
-            writeFile(`${BASE_STUBS_DIR}/App.vue`, 'Stub App.vue'),
-            writeFile(`${BASE_STUBS_DIR}/App-bootstrap.vue`, 'Stub App.vue WITH BOOTSTRAP'),
-            writeFile(`${BASE_STUBS_DIR}/general.scss`, 'SCSS NO BOOTSTRAP'),
-            writeFile(`${BASE_STUBS_DIR}/general-bootstrap.scss`, 'SCSS WITH BOOTSTRAP'),
-            writeFile(`${BASE_STUBS_DIR}/HelloWorld.vue`, 'Stub HelloWorld.vue'),
-            writeFile(`${BASE_STUBS_DIR}/main.js`, 'Stub main.js'),
+            writeFile(`${BASE_STUBS_DIR}/default/App.vue`, 'Stub App.vue'),
+            writeFile(`${BASE_STUBS_DIR}/default/general.scss`, 'SCSS NO BOOTSTRAP'),
+            writeFile(`${BASE_STUBS_DIR}/default/HelloWorld.vue`, 'Stub HelloWorld.vue'),
+            writeFile(`${BASE_STUBS_DIR}/default/main.js`, 'Stub main.js'),
+            writeFile(`${BASE_STUBS_DIR}/bootstrap/App.vue`, 'Stub App.vue WITH BOOTSTRAP'),
+            writeFile(`${BASE_STUBS_DIR}/bootstrap/general.scss`, 'SCSS WITH BOOTSTRAP'),
+            writeFile(`${BASE_STUBS_DIR}/bootstrap/HelloWorld.vue`, 'Stub HelloWorld.vue'),
+            writeFile(`${BASE_STUBS_DIR}/bootstrap/main.js`, 'Stub main.js'),
 
             writeFile(`${BASE_DIR}/vite.config.js`, '...'),
             writeFile(`${BASE_DIR}/App.vue`, '...'),
@@ -121,11 +123,11 @@ describe('e2e test vue-3-options-preset', () => {
         const { removeFile, execute } = await test;
 
         // Scaffolding for this specific test
-        await removeFile(`${BASE_STUBS_DIR}/App-bootstrap.vue`);
-        await removeFile(`${BASE_STUBS_DIR}/general-bootstrap.scss`);
+        await removeFile(`${BASE_STUBS_DIR}/bootstrap/App.vue`);
+        await removeFile(`${BASE_STUBS_DIR}/bootstrap/general.scss`);
         await removeFile(`${BASE_STUBS_DIR}${JSON_FILE}`);
-        await removeFile(`${BASE_STUBS_DIR}/HelloWorld.vue`);
-        await removeFile(`${BASE_STUBS_DIR}/main.js`);
+        await removeFile(`${BASE_STUBS_DIR}/bootstrap/HelloWorld.vue`);
+        await removeFile(`${BASE_STUBS_DIR}/bootstrap/main.js`);
 
         const { code, stdout } = await execute('node', `./cmd/index.js -b`);
 
@@ -142,11 +144,11 @@ describe('e2e test vue-3-options-preset', () => {
         const { removeFile, execute } = await test;
 
         // Scaffolding for this specific test
-        await removeFile(`${BASE_STUBS_DIR}/App.vue`);
-        await removeFile(`${BASE_STUBS_DIR}/general.scss`);
+        await removeFile(`${BASE_STUBS_DIR}/default/App.vue`);
+        await removeFile(`${BASE_STUBS_DIR}/default/general.scss`);
         await removeFile(`${BASE_STUBS_DIR}${JSON_FILE}`);
-        await removeFile(`${BASE_STUBS_DIR}/HelloWorld.vue`);
-        await removeFile(`${BASE_STUBS_DIR}/main.js`);
+        await removeFile(`${BASE_STUBS_DIR}/default/HelloWorld.vue`);
+        await removeFile(`${BASE_STUBS_DIR}/default/main.js`);
 
         const { code, stdout } = await execute('node', './cmd/index.js');
 
